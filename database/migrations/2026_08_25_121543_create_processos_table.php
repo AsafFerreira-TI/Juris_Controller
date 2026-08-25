@@ -11,14 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('clientes', function (Blueprint $table) {
+        Schema::create('processos', function (Blueprint $table) {
             $table->id();
-            $table->string('nome_cli');
-            $table->string('cpf_cnpj_cli');
-            $table->string('rg_cli');
-            $table->date('nasc_cli')->nullable();
-            $table->string('tel_cli');
-            $table->string('email_cli');
             $table->timestamps();
         });
     }
@@ -28,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('clientes');
+        Schema::dropIfExists('processos');
     }
 };
