@@ -191,7 +191,7 @@
 
                 {{-- SOBRE --}}
                 <a
-                    href="#sobre"
+                    href="sobre"
                     class="list-group-item list-group-item-action bg-transparent text-white border-0 rounded-3 py-3"
                 >
                     <i class="bi bi-info-circle me-3"></i>
