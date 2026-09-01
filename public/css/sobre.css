@@ -32,7 +32,7 @@ body {
     max-width: 1200px;
 
     margin: 0 auto;
-    padding: 80px 55px;
+    padding: 80px 55px ;
 }
 
 .sobre-label {
@@ -41,14 +41,14 @@ body {
 
     color: #f5b400;
 
-    font-size: 14px;
+    font-size: 34px;
     font-weight: 700;
 }
 
 .sobre h1 {
     color: white;
 
-    font-size: 48px;
+    font-size: 58px;
     line-height: 1.08;
     font-weight: 700;
 
@@ -62,7 +62,7 @@ body {
 .sobre p {
     color: #ddd;
 
-    font-size: 16px;
+    font-size: 20px;
     line-height: 1.6;
 
     max-width: 550px;
