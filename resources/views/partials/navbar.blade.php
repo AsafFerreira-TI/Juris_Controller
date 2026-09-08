@@ -48,7 +48,7 @@
                 <li class="nav-item">
                     <a
                         class="nav-link text-secondary fw-medium"
-                        href="#solucoes"
+                        href="solucoes"
                     >
                         Soluções
                     </a>
@@ -66,7 +66,7 @@
                 <li class="nav-item">
                     <a
                         class="nav-link text-secondary fw-medium"
-                        href="#sobre"
+                        href="sobre"
                     >
                         Sobre
                     </a>
@@ -171,7 +171,7 @@
 
                 {{-- SOLUÇÕES --}}
                 <a
-                    href="#solucoes"
+                    href="solucoes"
                     class="list-group-item list-group-item-action bg-transparent text-white border-0 rounded-3 py-3"
                 >
                     <i class="bi bi-grid me-3"></i>
