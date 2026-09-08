@@ -11,13 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('documentos', function (Blueprint $table) {
+        Schema::create('audiencias', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId('id_processo')->constrained('processos')->cascadeOnDelete();
-            $table->string('nome_documento');
-            $table->string('tipo_documento');
-            $table->string('arquivo_documento');
+            $table->dateTime('data_audiencia');
+            $table->string('tipo_audiencia');
+            $table->string('local_audiencia');
+            $table->string('status_audiencia');
+            $table->string('obs_audiencia');
 
             $table->timestamps();
         });
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('documentos');
+        Schema::dropIfExists('audiencias');
     }
 };
