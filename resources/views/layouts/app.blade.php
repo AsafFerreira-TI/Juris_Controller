@@ -13,7 +13,7 @@
 <body class="bg-light">
 
     @include('partials.navbar')
-    <main class="container py-4">
+    <main>
         @yield('content')
     </main>
     @include('partials.footer')

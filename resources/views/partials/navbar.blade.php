@@ -48,36 +48,18 @@
                 <li class="nav-item">
                     <a
                         class="nav-link text-secondary fw-medium"
-                        href="#solucoes"
-                    >
-                        Soluções
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a
-                        class="nav-link text-secondary fw-medium"
-                        href="#recursos"
-                    >
-                        Recursos
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a
-                        class="nav-link text-secondary fw-medium"
-                        href="#sobre"
-                    >
-                        Sobre
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a
-                        class="nav-link text-secondary fw-medium"
                         href="#contato"
                     >
-                        Contato
+                        Serviços
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a
+                        class="nav-link text-secondary fw-medium"
+                        href="sobre"
+                    >
+                        Sobre
                     </a>
                 </li>
 
@@ -175,38 +157,19 @@
                     class="list-group-item list-group-item-action bg-transparent text-white border-0 rounded-3 py-3"
                 >
                     <i class="bi bi-grid me-3"></i>
-                    Soluções
-                </a>
-
-
-                {{-- RECURSOS --}}
-                <a
-                    href="#recursos"
-                    class="list-group-item list-group-item-action bg-transparent text-white border-0 rounded-3 py-3"
-                >
-                    <i class="bi bi-folder me-3"></i>
-                    Recursos
+                    Serviços
                 </a>
 
 
                 {{-- SOBRE --}}
                 <a
-                    href="#sobre"
+                    href="sobre"
                     class="list-group-item list-group-item-action bg-transparent text-white border-0 rounded-3 py-3"
                 >
                     <i class="bi bi-info-circle me-3"></i>
                     Sobre
                 </a>
 
-
-                {{-- CONTATO --}}
-                <a
-                    href="#contato"
-                    class="list-group-item list-group-item-action bg-transparent text-white border-0 rounded-3 py-3"
-                >
-                    <i class="bi bi-envelope me-3"></i>
-                    Contato
-                </a>
 
             </div>
 
@@ -237,16 +200,6 @@
                     <span class="badge text-bg-warning rounded-pill float-end">
                         3
                     </span>
-                </a>
-
-
-                {{-- CONFIGURAÇÕES --}}
-                <a
-                    href="#configuracoes"
-                    class="list-group-item list-group-item-action bg-transparent text-white border-0 rounded-3 py-3"
-                >
-                    <i class="bi bi-gear me-3"></i>
-                    Configurações
                 </a>
 
             </div>
