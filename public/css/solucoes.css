@@ -72,11 +72,11 @@ body {
     color: #f5b400;
 }
 
-.solucoes p {
+.solucoes label {
     color: #ddd;
 
     font-size: 20px;
-    line-height: 1.6;
+    line-height: 2;
 
     max-width: 550px;
 }
@@ -118,40 +118,29 @@ body {
     color: #f5b400;
 }
 
-.planos{
-    position: relative;
-    width: 100%;
-    max-width: 1200px;
-    z-index: 2;
 
+table label span{
+    background-color: green;
+    border-radius: 100px;
+    padding-left: 3px;
+    padding-right: 3px;
 }
-.mensal{
-    position: absolute;
-    padding-right: 50%;
+ table .men{
+    padding-right: 40px;
 }
-
-.mensal p{
-    border: solid 0.5px #f5b400;
-    border-radius: 20px;
-    padding-left: 10%;
-    padding-right: 110%;
+table .men label{
+    background-color: #D08F1E;
+    border-radius: 100px;
+    padding-left: 20%;
+    padding-right: 20%;
 }
-
-.planos p {
-    padding-top: 5%;
-    padding-bottom: 10%;
-}
-.semestral{
-    position: absolute;
+ table .an{
+    padding-left: 40px;
 }
 
-.anual{
-    position: absolute;
-padding-left: 50%;
-}
-
-.solucoes-cont .planos{
-    justify-content:center;
-    display:flex;
-    flex-wrap:wrap;
+ table{
+    border-collapse:unset;
+    border: solid 1.5px white;
+    border-radius: 100px;
+    padding-right: 2%;
 }

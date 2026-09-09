@@ -28,6 +28,7 @@
     </div>
 
 </section>
+<center>
 <section class="solucoes">
 
     <div class="solucoes-cont">
@@ -41,17 +42,28 @@
             <span>mais crescimento para o seu negócio.</span>
         </h1>
 
-        <div class="planos">
-            <div class="mensal">
-                <p class="men">Mensal</p>
-            </div>
-            <div class="semestral">
-                <p class="sem">Semestral <span>-10%</span></p>
-            </div>
-            <div class="anual">
-                <p class="an">Anual <span>-10%</span></p>
-            </div>
-        </div>
+            <table>
+                <tr>
+                    <td class="men">
+                        <div class="mensal">
+                            <label>Mensal</label>
+                        </div>
+                    </td>
+                    <td class="sem">
+                        <div class="semestral">
+                            <label>Semestral <span>-10%</span></label>
+                        </div>
+                    </td>
+                    <td class="an">
+                        <div class="anual">
+                            <label>Anual <span>-10%</span></label>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+
+
         <!--<p>
             O Juris Control nasceu com o propósito de transformar
             a gestão jurídica por meio da tecnologia, da inovação e
@@ -59,7 +71,7 @@
         </p> -->
 
     </div>
-
+</center>
 </section>
 
 @endsection
