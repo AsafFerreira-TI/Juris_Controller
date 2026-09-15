@@ -117,7 +117,7 @@
                 </h5>
 
                 <h6 class="card-subtitle mb-2 text-muted">
-                    Parceira
+                    Parceiria
                 </h6>
 
                 <p class="card-text">
@@ -154,44 +154,66 @@
 
 <div class="numeros-container">
 
-    <div class="numero-item">
-        <div class="numero-icone">
-            <img src="{{ asset('img/users.2.png') }}" alt="Escritórios atendidos">
-        </div>
-        <div class="numero-texto">
-            <strong>+1.500</strong>
-            <span>Escritórios atendidos</span>
-        </div>
+    <div class="numeros-intro">
+        <span class="numeros-label">
+            NOSSOS VALORES
+        </span>
     </div>
 
-    <div class="numero-item">
-        <div class="numero-icone">
-            <img src="{{ asset('img/icone-processos.png') }}" alt="Processos gerenciados">
-        </div>
-        <div class="numero-texto">
-            <strong>+2,5 milhões</strong>
-            <span>Processos gerenciados</span>
-        </div>
-    </div>
+    <div class="numeros-itens">
 
-    <div class="numero-item">
-        <div class="numero-icone">
-            <img src="{{ asset('img/icone-horas.png') }}" alt="Horas economizadas">
-        </div>
-        <div class="numero-texto">
-            <strong>+200 mil</strong>
-            <span>Horas economizadas</span>
-        </div>
-    </div>
+        <div class="numero-item">
+            <div class="numero-icone">
+                <img src="{{ asset('img/balanca.png') }}" alt="Ética e Transparência">
+            </div>
 
-    <div class="numero-item">
-        <div class="numero-icone">
-            <img src="{{ asset('img/icone-satisfacao.png') }}" alt="Satisfação dos clientes">
+            <div class="numero-texto">
+                <strong>Ética e Transparência</strong>
+                <span>
+                    Atuamos com integridade e clareza em todas as nossas relações
+                </span>
+            </div>
         </div>
-        <div class="numero-texto">
-            <strong>98%</strong>
-            <span>Satisfação dos clientes</span>
+
+        <div class="numero-item">
+            <div class="numero-icone">
+                <img src="{{ asset('img/light.png') }}" alt="Inovação">
+            </div>
+
+            <div class="numero-texto">
+                <strong>Inovação</strong>
+                <span>
+                    Buscamos constantemente novas formas de simplificar e transformar a gestão jurídica.
+                </span>
+            </div>
         </div>
+
+        <div class="numero-item">
+            <div class="numero-icone">
+                <img src="{{ asset('img/hand.png') }}" alt="Compromisso">
+            </div>
+
+            <div class="numero-texto">
+                <strong>Compromisso</strong>
+                <span>
+                    Nos dedicamos ao sucesso dos nossos clientes como parceiros de verdade
+                </span>
+            </div>
+        </div>
+
+        <div class="numero-item">
+            <div class="numero-icone">
+                <img src="{{ asset('img/folha.png') }}" alt="Sustentabilidade">
+            </div>
+
+            <div class="numero-texto">
+                <strong>Sustentabilidade</strong>
+                <span>
+                    Usamos a tecnologia para reduzir o impacto ambiental e promover um futuro mais sustentável.
+                </span>
+            </div>
+        </div>
+
     </div>
 
 </div>

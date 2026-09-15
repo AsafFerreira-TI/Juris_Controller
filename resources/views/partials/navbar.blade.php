@@ -48,7 +48,7 @@
                 <li class="nav-item">
                     <a
                         class="nav-link text-secondary fw-medium"
-                        href="#contato"
+                        href="#servicos"
                     >
                         Serviços
                     </a>
