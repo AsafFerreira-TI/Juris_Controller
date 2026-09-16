@@ -30,7 +30,7 @@
           <div class="border border-warning border-2 rounded-circle p-2 me-2 d-inline-flex justify-content-center align-items-center" style="width: 60px; height: 60px;">
           <img src="{{ asset('img/JurisControl.png') }}" alt="Juris Control" class="img-full rounded-circle" width="165%">
           </div>
-          <span class="fs-4 fw-bold fst-italic text-white">JURIS <span class="fw-normal">CONTROL</span></span>
+          <span class="fs-4 fw-bold fst-italic text-white"><span class="fw-normal">JURIS</span> CONTROL</span>
         </div>
         <p class="text-secondary small">
           Soluções completas para gestão jurídica, trazendo mais controle, segurança e eficiência para o seu escritório.
