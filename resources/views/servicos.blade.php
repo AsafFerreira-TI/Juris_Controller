@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Soluções')
+@section('title', 'Serviços')
 
 @section('content')
 
@@ -60,7 +60,7 @@
                         </div>
                     </td>
                 </tr>
-            </table>
+</table>
 
 
 
