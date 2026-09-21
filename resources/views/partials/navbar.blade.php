@@ -216,28 +216,30 @@
                     class="rounded-circle bg-warning text-dark d-flex align-items-center justify-content-center fw-bold"
                     style="width: 42px; height: 42px;"
                 >
-                    K
                 </div>
 
                 <div class="ms-3">
 
                 @auth
                     <div class="fw-semibold">
-                        oi
+                        {{ Auth::user()->nome_advg }}
                     </div>
 
-                    <small class="text-secondary">
-                        Minha conta
-                    </small>
+                    <a href="{{ route('perfil') }}">
+                        <small class="text-secondary">
+                            Minha conta
+                        </small>
+                    </a>
                 @else
-
-                <div class="fw-semibold">
-                        cu
+                    <div class="fw-semibold">
+                        Entre na sua conta
                     </div>
 
-                    <small class="text-secondary">
-                        Minha conta
-                    </small>
+                    <a href="{{ route('login') }}">
+                        <small class="text-secondary">
+                            Minha conta
+                        </small>
+                    </a>
                 @endauth
 
 

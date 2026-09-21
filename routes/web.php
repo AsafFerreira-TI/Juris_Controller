@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SobreController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PerfilController;
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])
     ->name('login');
@@ -30,5 +31,4 @@ Route::get('/', function () {
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/sobre', [SobreController::class, 'index'])->name('sobre');
-
-
+Route::get('/perfil', [PerfilController::class, 'index'])->name('perfil');
