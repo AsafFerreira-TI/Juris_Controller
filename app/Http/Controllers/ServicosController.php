@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class SolucoesController extends Controller
+class ServicosController extends Controller
 {
-     public function index()
+    //
+    public function index()
         {
             $titulo = 'Nossos Serviços';
             return view('servicos', compact('titulo'));

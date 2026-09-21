@@ -48,7 +48,7 @@
                 <li class="nav-item">
                     <a
                         class="nav-link text-secondary fw-medium"
-                        href="#servicos"
+                        href="{{ route('servicos') }}"
                     >
                         Serviços
                     </a>
@@ -57,7 +57,7 @@
                 <li class="nav-item">
                     <a
                         class="nav-link text-secondary fw-medium"
-                        href="sobre"
+                        href="{{ route('sobre') }}"
                     >
                         Sobre
                     </a>
@@ -87,9 +87,9 @@
 
             {{-- PERFIL --}}
             <a
-                href="#"
+                href="{{ route('login') }}"
                 class="text-white fs-4 text-decoration-none navbar-icon"
-                aria-label="Perfil"
+                aria-label="Login"
             >
                 <i class="bi bi-person-circle"></i>
             </a>
@@ -153,7 +153,7 @@
 
                 {{-- SOLUÇÕES --}}
                 <a
-                    href="#solucoes"
+                    href="{{ route('servicos') }}"
                     class="list-group-item list-group-item-action bg-transparent text-white border-0 rounded-3 py-3"
                 >
                     <i class="bi bi-grid me-3"></i>
@@ -163,7 +163,7 @@
 
                 {{-- SOBRE --}}
                 <a
-                    href="sobre"
+                    href="{{ route('sobre') }}"
                     class="list-group-item list-group-item-action bg-transparent text-white border-0 rounded-3 py-3"
                 >
                     <i class="bi bi-info-circle me-3"></i>

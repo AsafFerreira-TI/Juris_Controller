@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: black;
+}
+
+.solucoes-img {
+    position: relative;
+
+    width: 100%;
+    height: 520px;
+
+    background-image: url('/img/img_fundo_servicos.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+
+    overflow: hidden;
+}
+
+.solucoes-conteudo {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 1200px;
+
+    margin: 0 auto;
+    padding: 80px 55px ;
+}
+
+.solucoes-label {
+    display: block;
+    margin-bottom: 18px;
+
+    color: #f5b400;
+
+    font-size: 34px;
+    font-weight: 700;
+}
+
+.solucoes h1 {
+    color: white;
+
+    font-size: 50px;
+    line-height: 1.08;
+    font-weight: 500;
+    text-align:center;
+
+    margin-bottom: 24px;
+}
+
+.solucoes-img h1 {
+    color: white;
+
+    font-size: 50px;
+    line-height: 1.08;
+    font-weight: 700;
+
+    margin-bottom: 24px;
+}
+
+.solucoes-img h1 span {
+    color: #f5b400;
+}
+
+.solucoes label {
+    color: #ddd;
+
+    font-size: 20px;
+    line-height: 2;
+
+    max-width: 550px;
+}
+
+.solucoes-img p {
+    color: #ddd;
+
+    font-size: 20px;
+    line-height: 1.6;
+
+    max-width: 550px;
+}
+
+.solucoes{
+    background-color: black;
+}
+.solucoes-cont{
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 1200px;
+
+    margin: 0 auto;
+    padding: 80px 55px ;
+}
+.solucoes-lbl {
+    display: block;
+    text-align: center;
+    margin-bottom: 18px;
+
+    color: #f5b400;
+
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.solucoes h1 span {
+    color: #f5b400;
+}
+
+
+table label span{
+    background-color: green;
+    border-radius: 100px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+ table .men{
+    padding-right: 40px;
+}
+table .men label{
+    background-color: #D08F1E;
+    border-radius: 100px;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+ table .an{
+    padding-left: 40px;
+}
+
+ table{
+    border-collapse:unset;
+    border: solid 1.5px white;
+    border-radius: 100px;
+    padding-right: 2%;
+}
