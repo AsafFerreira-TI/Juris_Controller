@@ -221,13 +221,25 @@
 
                 <div class="ms-3">
 
+                @auth
                     <div class="fw-semibold">
-                        Kauã
+                        oi
                     </div>
 
                     <small class="text-secondary">
                         Minha conta
                     </small>
+                @else
+
+                <div class="fw-semibold">
+                        cu
+                    </div>
+
+                    <small class="text-secondary">
+                        Minha conta
+                    </small>
+                @endauth
+
 
                 </div>
 
