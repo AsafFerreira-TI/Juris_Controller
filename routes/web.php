@@ -6,6 +6,14 @@ use App\Http\Controllers\SobreController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\ServicosController;
+use App\Http\Controllers\ProcessoController;
+
+Route::get('/processos', [ProcessoController::class, 'index'])
+    ->name('processos.index');
+
+Route::get('/', function () {
+    return redirect()->route('home');
+});
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])
     ->name('login');
@@ -25,10 +33,6 @@ Route::post('/logout', [AuthController::class, 'logout'])
 Route::get('/dashboard', function () {
     return view('auth.dashboard');
 })->middleware('auth')->name('dashboard');
-
-Route::get('/', function () {
-    return redirect()->route('login');
-});
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 

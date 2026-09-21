@@ -2,21 +2,67 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Processo;
 use Illuminate\Http\Request;
 
 class ProcessoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        return view('processos.index');
+       /* $query = Processo::query();
+
+        if ($request->filled('busca')) {
+
+            $busca = $request->busca;
+
+            $query->where(function ($q) use ($busca) {
+
+                $q->where('numero', 'ILIKE', "%{$busca}%")
+                  ->orWhere('cliente', 'ILIKE', "%{$busca}%")
+                  ->orWhere('assunto', 'ILIKE', "%{$busca}%");
+
+            });
+        }
+
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+
+        if ($request->filled('tipo')) {
+            $query->where('tipo', $request->tipo);
+        }
+
+        $processos = $query
+            ->latest()
+            ->paginate(10)
+            ->withQueryString();
+
+        $totalProcessos = Processo::count();
+
+        $emAndamento = Processo::where('status', 'andamento')->count();
+
+        $concluidos = Processo::where('status', 'concluido')->count();
+
+        $emPrazo = Processo::where('status', 'andamento')
+            ->whereDate('prazo', '>=', now())
+            ->count();
+
+        $vencendo = Processo::whereBetween(
+            'prazo',
+            [now(), now()->addDays(7)]
+        )->count();
+
+        return view('processos.index', compact(
+            'processos',
+            'totalProcessos',
+            'emAndamento',
+            'concluidos',
+            'emPrazo',
+            'vencendo'
+        ));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         //
@@ -25,6 +71,7 @@ class ProcessoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    }
     public function store(Request $request)
     {
         //

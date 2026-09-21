@@ -9,7 +9,7 @@
 
         {{-- Nome --}}
         <div class="mb-3">
-            <label class="form-label">Nome</label>
+            <label class="form-label">Nome Completo</label>
             <input
                 type="text"
                 name="nome_advg"

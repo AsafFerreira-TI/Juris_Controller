@@ -36,9 +36,9 @@
             {{-- LINKS: aparecem apenas no desktop --}}
             <ul class="navbar-nav flex-row align-items-center gap-4 d-none d-lg-flex">
 
-                <li class="nav-item">
+               <li class="nav-item">
                     <a
-                        class="nav-link active text-white fw-medium border-bottom border-warning border-2 pb-1"
+                        class="nav-link fw-medium {{ request()->routeIs('home') ? 'text-white border-bottom border-warning border-2 pb-1' : 'text-secondary' }}"
                         href="{{ route('home') }}"
                     >
                         Início
@@ -47,7 +47,7 @@
 
                 <li class="nav-item">
                     <a
-                        class="nav-link text-secondary fw-medium"
+                        class="nav-link fw-medium {{ request()->routeIs('servicos') ? 'text-white border-bottom border-warning border-2 pb-1' : 'text-secondary' }}"
                         href="{{ route('servicos') }}"
                     >
                         Serviços
@@ -56,13 +56,22 @@
 
                 <li class="nav-item">
                     <a
-                        class="nav-link text-secondary fw-medium"
+                        class="nav-link fw-medium {{ request()->routeIs('sobre') ? 'text-white border-bottom border-warning border-2 pb-1' : 'text-secondary' }}"
                         href="{{ route('sobre') }}"
                     >
                         Sobre
                     </a>
                 </li>
-
+                @auth
+                <li class="nav-item">
+                    <a
+                        class="nav-link fw-medium {{ request()->routeIs('processos.index') ? 'text-white border-bottom border-warning border-2 pb-1' : 'text-secondary' }}"
+                        href="{{ route('processos.index') }}"
+                    >
+                        Processos
+                    </a>
+                </li>
+                @endauth
             </ul>
 
 
@@ -86,6 +95,15 @@
 
 
             {{-- PERFIL --}}
+            @auth
+            <a
+                href="{{ route('perfil') }}"
+                class="text-white fs-4 text-decoration-none navbar-icon"
+                aria-label="Login"
+            >
+                <i class="bi bi-person-circle"></i>
+            </a>
+            @else
             <a
                 href="{{ route('login') }}"
                 class="text-white fs-4 text-decoration-none navbar-icon"
@@ -93,11 +111,14 @@
             >
                 <i class="bi bi-person-circle"></i>
             </a>
+            @endauth
+
 
         </div>
 
     </div>
 </nav>
+
 
 
 <div
@@ -144,17 +165,23 @@
                 {{-- INÍCIO --}}
                 <a
                     href="{{ route('home') }}"
-                    class="list-group-item list-group-item-action bg-warning text-dark border-0 rounded-3 fw-semibold py-3"
+                    class="list-group-item list-group-item-action border-0 rounded-3 fw-semibold py-3
+                    {{ request()->routeIs('home')
+                        ? 'bg-warning text-dark'
+                        : 'bg-transparent text-white' }}"
                 >
                     <i class="bi bi-house-door me-3"></i>
                     Início
                 </a>
 
 
-                {{-- SOLUÇÕES --}}
+                {{-- SERVIÇOS --}}
                 <a
                     href="{{ route('servicos') }}"
-                    class="list-group-item list-group-item-action bg-transparent text-white border-0 rounded-3 py-3"
+                    class="list-group-item list-group-item-action border-0 rounded-3 py-3
+                    {{ request()->routeIs('servicos')
+                        ? 'bg-warning text-dark'
+                        : 'bg-transparent text-white' }}"
                 >
                     <i class="bi bi-grid me-3"></i>
                     Serviços
@@ -164,12 +191,14 @@
                 {{-- SOBRE --}}
                 <a
                     href="{{ route('sobre') }}"
-                    class="list-group-item list-group-item-action bg-transparent text-white border-0 rounded-3 py-3"
+                    class="list-group-item list-group-item-action border-0 rounded-3 py-3
+                    {{ request()->routeIs('sobre')
+                        ? 'bg-warning text-dark'
+                        : 'bg-transparent text-white' }}"
                 >
                     <i class="bi bi-info-circle me-3"></i>
                     Sobre
                 </a>
-
 
             </div>
 
@@ -218,30 +247,40 @@
                 >
                 </div>
 
+
                 <div class="ms-3">
 
-                @auth
-                    <div class="fw-semibold">
-                        {{ Auth::user()->nome_advg }}
-                    </div>
+                    @auth
 
-                    <a href="{{ route('perfil') }}" class="text-decoration-none">
-                        <small class=" bg-transparent text-white border-0 rounded-3 py-3">
-                            Minha conta
-                        </small>
-                    </a>
-                @else
-                    <div class="fw-semibold">
-                        Entre na sua conta
-                    </div>
+                        <div class="fw-semibold">
+                            {{ Auth::user()->nome_advg }}
+                        </div>
 
-                    <a href="{{ route('perfil') }}" class="text-decoration-none">
-                        <small class=" bg-transparent text-white border-0 rounded-3 py-3">
-                            Minha conta
-                        </small>
-                    </a>
-                @endauth
+                        <a
+                            href="{{ route('perfil') }}"
+                            class="text-decoration-none"
+                        >
+                            <small class="text-white">
+                                Minha conta
+                            </small>
+                        </a>
 
+                    @else
+
+                        <div class="fw-semibold">
+                            Entre na sua conta
+                        </div>
+
+                        <a
+                            href="{{ route('perfil') }}"
+                            class="text-decoration-none"
+                        >
+                            <small class="text-white">
+                                Minha conta
+                            </small>
+                        </a>
+
+                    @endauth
 
                 </div>
 
@@ -253,7 +292,3 @@
 
 </div>
 
-
-    </div>
-
-</div>
