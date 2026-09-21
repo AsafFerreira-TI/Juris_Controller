@@ -225,8 +225,8 @@
                         {{ Auth::user()->nome_advg }}
                     </div>
 
-                    <a href="{{ route('perfil') }}">
-                        <small class="text-secondary">
+                    <a href="{{ route('perfil') }}" class="text-decoration-none">
+                        <small class=" bg-transparent text-white border-0 rounded-3 py-3">
                             Minha conta
                         </small>
                     </a>
@@ -235,8 +235,8 @@
                         Entre na sua conta
                     </div>
 
-                    <a href="{{ route('login') }}">
-                        <small class="text-secondary">
+                    <a href="{{ route('perfil') }}" class="text-decoration-none">
+                        <small class=" bg-transparent text-white border-0 rounded-3 py-3">
                             Minha conta
                         </small>
                     </a>

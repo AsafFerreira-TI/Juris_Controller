@@ -4,12 +4,11 @@
 
 .perfil-page {
     width: 100%;
-    max-width: 1500px;
-
-    margin: 0 auto;
+    min-height: 100vh;
     padding: 55px 45px 80px;
-
+    background-color: #000;
     color: #fff;
+    box-sizing: border-box;
 }
 
 
@@ -94,27 +93,6 @@
         );
 }
 
-
-/* detalhe amarelo */
-
-.perfil-resumo::after {
-
-    content: "";
-
-    position: absolute;
-
-    right: -45px;
-    bottom: -55px;
-
-    width: 130px;
-    height: 130px;
-
-    background: #f5b400;
-
-    transform: rotate(45deg);
-
-    opacity: .9;
-}
 
 
 /* AVATAR */
