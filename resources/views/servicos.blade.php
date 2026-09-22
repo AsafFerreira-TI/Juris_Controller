@@ -6,72 +6,76 @@
 
 <link rel="stylesheet" href="{{ asset('css/solucoes.css') }}">
 
-<section class="solucoes-img">
+<section class="servicos-hero">
+    <div class="hero-content">
+        <div class="hero-text">
+            <span class="lbl-orange">NOSSOS SERVIÇOS</span>
+            <h1>Planos que se adaptam<br><span>ao seu escritório</span></h1>
+            <p>Melhoria na eficiência do seu trabalho, redução de erros operacionais, evitando a perda de prazos importantes.</p>
+        </div>
+    </div>
+</section>
 
-    <div class="solucoes-conteudo">
-
-        <span class="solucoes-label">
-            NOSSOS SERVIÇOS
-        </span>
-
-        <h1>
-            Planos que se adaptam<br>
-            <span>ao seu escritório</span>
-        </h1>
-
-        <p>
-            Melhoria na eficiencia do seu trablaho, reducao de
-            erros operacionais, evitando a perda de prazos
-            importantes.
-        </p>
-
+<section class="planos-container">
+    <div class="planos-header">
+        <span class="lbl-orange">Planos e preços</span>
+        <h2>Mais controle, mais produtividade,<br><span>mais crescimento para o seu negócio.</span></h2>
     </div>
 
-</section>
-<center>
-<section class="solucoes">
-
-    <div class="solucoes-cont">
-
-        <span class="solucoes-lbl">
-            Planos e preços
-        </span>
-
-        <h1>
-            Mais controle, mais produtividade,<br>
-            <span>mais crescimento para o seu negócio.</span>
-        </h1>
-
-            <table>
-                <tr>
-                    <td class="men">
-                        <div class="mensal">
-                            <label>Mensal</label>
-                        </div>
-                    </td>
-                    <td class="sem">
-                        <div class="semestral">
-                            <label>Semestral <span>-10%</span></label>
-                        </div>
-                    </td>
-                    <td class="an">
-                        <div class="anual">
-                            <label>Anual <span>-10%</span></label>
-                        </div>
-                    </td>
-                </tr>
-</table>
-
-
-
-        <!--<p>
-            O Juris Control nasceu com o propósito de transformar
-            a gestão jurídica por meio da tecnologia, da inovação e
-            do compromisso com resultados.
-        </p> -->
-
+    <div class="planos-selector">
+        <button class="active">Mensal</button>
+        <button>Semestral <span class="badge">-10%</span></button>
+        <button>Anual <span class="badge">-20%</span></button>
     </div>
-</center>
+
+    <div class="plano-card">
+        <div class="plano-card-header">
+            <h3>Mensal</h3>
+            <p>Ideal para profissionais que estão começando</p>
+            <div class="price">R$ 59,90/mês</div>
+        </div>
+        <div class="plano-features">
+            <div class="feature-col">
+                <ul>
+                    <li><span>✔</span> Gestão de Clientes</li>
+                    <li><span>✔</span> Gestão de Processos</li>
+                    <li><span>✔</span> Agenda Integrada</li>
+                </ul>
+            </div>
+            <div class="feature-col">
+                <ul>
+                    <li><span>✔</span> Documentos</li>
+                    <li><span>✔</span> Relatórios Básicos</li>
+                    <li><span>✔</span> Suporte por e-mail</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="beneficios-row">
+        <div class="beneficio-item">
+            <div class="icon"><img src="{{ asset('img/escudo.png') }}" alt="Escudo"></div>
+            <div class="text">
+                <strong>Sem fidelidade</strong>
+                <p>Cancele quando quiser, sem burocracia.</p>
+            </div>
+        </div>
+        <div class="beneficio-item">
+            <div class="icon"><img src="{{ asset('img/nuvem_cadeado.png') }}" alt="Nuvem"></div>
+            <div class="text">
+                <strong>Seus dados protegidos</strong>
+                <p>Segurança avançada e backup automático.</p>
+            </div>
+        </div>
+        <div class="beneficio-item">
+            <div class="icon"><img src="{{ asset('img/headphone.png') }}" alt="Phone"></div>
+            <div class="text">
+                <strong>Suporte especializado</strong>
+                <p>Sempre a disposição para ajudar no que precisar.</p>
+            </div>
+        </div>
+    </div>
 </section>
+
 
 @endsection
