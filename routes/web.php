@@ -15,6 +15,10 @@ Route::get('/', function () {
     return redirect()->route('home');
 });
 
+Route::middleware(['auth'])->group(function () {
+    Route::resource('processos', ProcessoController::class);
+});
+
 Route::get('/login', [AuthController::class, 'showLoginForm'])
     ->name('login');
 

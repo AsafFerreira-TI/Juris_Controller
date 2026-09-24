@@ -9,11 +9,15 @@ class Processo extends Model
     protected $table = 'processos';
 
     protected $fillable = [
-        'numero',
-        'cliente',
-        'assunto',
-        'tipo',
-        'status',
-        'prazo',
+        'id_advg',
+        'id_cliente',
+        'num_processo',
+        'tipo_processo',
+        'desc_processo',
+        'data_abertura_processo',
+        'vara_processo',
+        'status_processo',
+        'comarca',
+        'tribunal_processo',
     ];
 }

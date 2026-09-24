@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Processo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProcessoController extends Controller
 {
-    public function index(Request $request)
+   public function index(Request $request)
     {
-        return view('processos.index');
-       /* $query = Processo::query();
+        $query = Processo::query();
 
         if ($request->filled('busca')) {
 
@@ -18,19 +18,15 @@ class ProcessoController extends Controller
 
             $query->where(function ($q) use ($busca) {
 
-                $q->where('numero', 'ILIKE', "%{$busca}%")
-                  ->orWhere('cliente', 'ILIKE', "%{$busca}%")
-                  ->orWhere('assunto', 'ILIKE', "%{$busca}%");
+                $q->where('num_processo', 'ILIKE', "%{$busca}%")
+                ->orWhere('tipo_processo', 'ILIKE', "%{$busca}%")
+                ->orWhere('desc_processo', 'ILIKE', "%{$busca}%");
 
             });
         }
 
-        if ($request->filled('status')) {
-            $query->where('status', $request->status);
-        }
-
-        if ($request->filled('tipo')) {
-            $query->where('tipo', $request->tipo);
+        if ($request->filled('status_processo')) {
+            $query->where('status_processo', $request->status_processo);
         }
 
         $processos = $query
@@ -40,43 +36,52 @@ class ProcessoController extends Controller
 
         $totalProcessos = Processo::count();
 
-        $emAndamento = Processo::where('status', 'andamento')->count();
+        $emAndamento = Processo::where('status_processo', true)->count();
 
-        $concluidos = Processo::where('status', 'concluido')->count();
+        $concluidos = Processo::where('status_processo', false)->count();
 
-        $emPrazo = Processo::where('status', 'andamento')
-            ->whereDate('prazo', '>=', now())
+        $emPrazo = Processo::where('status_processo', true)
+            ->whereDate('data_abertura_processo', '>=', now())
             ->count();
-
-        $vencendo = Processo::whereBetween(
-            'prazo',
-            [now(), now()->addDays(7)]
-        )->count();
 
         return view('processos.index', compact(
             'processos',
             'totalProcessos',
             'emAndamento',
             'concluidos',
-            'emPrazo',
-            'vencendo'
+            'emPrazo'
         ));
     }
 
+
     public function create()
     {
-        //
+        return view('processos.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    }
+
     public function store(Request $request)
     {
-        //
-    }
+        $dados = $request->validate([
+            'num_processo' => 'required|string|max:100|unique:processos,num_processo',
+            'id_cliente' => 'required|string|max:100|',
+            'tipo_processo' => 'required|string|max:100',
+            'desc_processo' => 'nullable|string|max:500',
+            'data_abertura_processo' => 'nullable|date',
+            'vara_processo' => 'nullable|string|max:500',
+            'status_processo' => 'required|string|in:andamento,concluido,vencido',
+            'comarca' => 'nullable|string|max:500',
+            'tribunal_processo' => 'nullable|string|max:500',
+        ]);
 
+        $dados['id_advg'] = Auth::id();
+
+        Processo::create($dados);
+
+        return redirect()
+            ->route('processos.index')
+            ->with('sucesso', 'Processo criado com sucesso!');
+    }
     /**
      * Display the specified resource.
      */

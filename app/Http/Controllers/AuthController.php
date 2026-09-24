@@ -11,31 +11,30 @@ class AuthController extends Controller
 {
     public function register(Request $request)
     {
-        $data = $request->validate([
-            'nome_advg' => ['required', 'string', 'max:255'],
-            'oab_advg' => ['required', 'string', 'max:50'],
-            'email_advg' => ['required', 'email', 'max:255', 'unique:users,email_advg'],
-            'cpf_advg' => ['required', 'string', 'max:20'],
-            'telefone_advg' => ['required', 'string', 'max:20'],
-            'password' => ['required', 'min:6', 'confirmed'],
+        $dados = $request->validate([
+            'categoria_id' => 'required|exists:categorias,id',
+            'nome' => 'required|string|max:100|unique:produtos,nome',
+            'descricao' => 'nullable|string|max:500',
+            'preco' => 'required|numeric',
+            'ativo' => 'nullable|boolean',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
-        $user = User::create([
-            'nome_advg' => $data['nome_advg'],
-            'oab_advg' => $data['oab_advg'],
-            'email_advg' => $data['email_advg'],
-            'cpf_advg' => $data['cpf_advg'],
-            'telefone_advg' => $data['telefone_advg'],
-            'password' => Hash::make($data['password']),
-        ]);
+        $dados['ativo'] = $request->has('ativo');
+        unset($dados['ativa']);
 
-        Auth::login($user);
+        if ($request->hasFile('image')) {
 
-        $request->session()->regenerate();
+            $path = $request->file('image')
+                ->store('produtos', 'public');
 
-        return redirect()
-            ->route('dashboard')
-            ->with('success', 'Conta criada com sucesso.');
+            $dados['image'] = $path;
+        }
+
+        Produto::create($dados);
+
+        return redirect()->route('produtos.index')
+            ->with('sucesso', 'Produto criado com sucesso!');
     }
 
 

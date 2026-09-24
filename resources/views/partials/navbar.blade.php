@@ -237,56 +237,55 @@
 
 
         {{-- ÁREA INFERIOR --}}
-        <div class="mt-auto pt-4 border-top border-secondary">
+    <div class="mt-auto pt-4 border-top border-secondary">
 
-            <div class="d-flex align-items-center">
+        <div class="d-flex align-items-center">
 
-                <div
-                    class="rounded-circle bg-warning text-dark d-flex align-items-center justify-content-center fw-bold"
-                    style="width: 42px; height: 42px;"
-                >
-                </div>
+            <div
+                class="rounded-circle bg-warning text-dark d-flex align-items-center justify-content-center fw-bold"
+                style="width: 42px; height: 42px;"
+            >
+            </div>
 
+            <div class="ms-3">
 
-                <div class="ms-3">
+                @auth
 
-                    @auth
+                    <div class="fw-semibold">
+                        {{ Auth::user()->nome_advg }}
+                    </div>
 
-                        <div class="fw-semibold">
-                            {{ Auth::user()->nome_advg }}
-                        </div>
+                    <a
+                        href="{{ route('perfil') }}"
+                        class="text-decoration-none"
+                    >
+                        <small class="text-white">
+                            Minha conta
+                        </small>
+                    </a>
 
-                        <a
-                            href="{{ route('perfil') }}"
-                            class="text-decoration-none"
-                        >
-                            <small class="text-white">
-                                Minha conta
-                            </small>
-                        </a>
+                @else
 
-                    @else
+                    <div class="fw-semibold">
+                        Entre na sua conta
+                    </div>
 
-                        <div class="fw-semibold">
-                            Entre na sua conta
-                        </div>
+                    <a
+                        href="{{ route('login') }}"
+                        class="text-decoration-none"
+                    >
+                        <small class="text-white">
+                            Minha conta
+                        </small>
+                    </a>
 
-                        <a
-                            href="{{ route('perfil') }}"
-                            class="text-decoration-none"
-                        >
-                            <small class="text-white">
-                                Minha conta
-                            </small>
-                        </a>
-
-                    @endauth
-
-                </div>
+                @endauth
 
             </div>
 
         </div>
+
+    </div>
 
     </div>
 
