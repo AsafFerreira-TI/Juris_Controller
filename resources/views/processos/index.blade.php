@@ -73,7 +73,7 @@
                 </div>
 
                 <div class="stat-number">
-                    {{ $emAndamento ?? 00 }}
+                    {{ $emAndamento ?? '' }}
                 </div>
 
                 <div class="stat-change stat-up">
@@ -181,22 +181,22 @@
                     <option value="">Todos</option>
 
                     <option value="andamento"
-                        {{ request('status') == 'andamento' ? 'selected' : '' }}>
+                        {{ request('status_processo') == 'andamento' ? 'selected' : '' }}>
                         Em andamento
                     </option>
 
                     <option value="analise"
-                        {{ request('status') == 'analise' ? 'selected' : '' }}>
+                        {{ request('status_processo') == 'analise' ? 'selected' : '' }}>
                         Em análise
                     </option>
 
                     <option value="pendente"
-                        {{ request('status') == 'pendente' ? 'selected' : '' }}>
+                        {{ request('status_processo') == 'pendente' ? 'selected' : '' }}>
                         Pendente
                     </option>
 
                     <option value="vencido"
-                        {{ request('status') == 'vencido' ? 'selected' : '' }}>
+                        {{ request('status_processo') == 'vencido' ? 'selected' : '' }}>
                         Vencido
                     </option>
 
@@ -294,10 +294,12 @@
 
                         <th>Nº do processo</th>
                         <th>Cliente</th>
-                        <th>Assunto</th>
                         <th>Tipo</th>
+                        <th>Data abertura</th>
+                        <th>Vara</th>
                         <th>Status</th>
-                        <th>Prazo</th>
+                        <th>Comarca</th>
+                        <th>Tribunal</th>
                         <th>Ações</th>
 
                     </tr>
@@ -318,57 +320,61 @@
                                 </span>
 
                                 <span class="numero-processo">
-                                    {{ $processo->numero }}
+                                    {{ $processo->num_processo }}
                                 </span>
 
                             </td>
 
                             <td>
-                                {{ $processo->cliente }}
+                                {{ $processo->id_cliente }}
                             </td>
 
                             <td>
-                                {{ $processo->assunto }}
+                                {{ $processo->tipo_processo }}
                             </td>
 
                             <td>
-                                {{ $processo->tipo }}
+                                {{ $processo->data_abertura_processo }}
+                            </td>
+
+                            <td>
+                                {{ $processo->vara_processo }}
                             </td>
 
                             <td>
 
                                 @php
-                                    $status = strtolower($processo->status ?? '');
+                                    $status = strtolower($processo->status_processo ?? '');
                                 @endphp
 
                                 @if($status == 'andamento')
 
                                     <span class="status status-andamento">
-                                        ● Em andamento
+                                         Em andamento
                                     </span>
 
                                 @elseif($status == 'analise')
 
                                     <span class="status status-analise">
-                                        ● Em análise
+                                         Em análise
                                     </span>
 
                                 @elseif($status == 'pendente')
 
                                     <span class="status status-pendente">
-                                        ● Pendente
+                                         Pendente
                                     </span>
 
                                 @elseif($status == 'vencido')
 
                                     <span class="status status-vencido">
-                                        ● Vencido
+                                         Vencido
                                     </span>
 
                                 @else
 
                                     <span class="status status-andamento">
-                                        ● {{ $processo->status }}
+                                         {{ $processo->status_processo }}
                                     </span>
 
                                 @endif
@@ -376,11 +382,13 @@
                             </td>
 
                             <td>
-                                {{ $processo->prazo
-                                    ? \Carbon\Carbon::parse($processo->prazo)->format('d/m/Y')
-                                    : '-'
-                                }}
+                                {{ $processo->comarca }}
                             </td>
+                            
+                            <td>
+                                {{ $processo->tribunal_processo }}
+                            </td>
+
 
                             <td>
 

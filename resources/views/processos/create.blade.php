@@ -102,7 +102,7 @@
 
         {{-- Status --}}
         <div class="mb-3">
-            <label class="form-label">status</label>
+            <label class="form-label">Status</label>
             <input
                 type="text"
                 name="status_processo"
