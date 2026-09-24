@@ -36,9 +36,9 @@ class ProcessoController extends Controller
 
         $totalProcessos = Processo::count();
 
-        $emAndamento = Processo::where('status_processo', true)->count();
+        $emAndamento = Processo::where('status_processo', 'andamento')->count();
 
-        $concluidos = Processo::where('status_processo', false)->count();
+        $concluidos = Processo::where('status_processo', 'concluido')->count();
 
         $emPrazo = Processo::where('status_processo', true)
             ->whereDate('data_abertura_processo', '>=', now())
