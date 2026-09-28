@@ -8,10 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class ProcessoController extends Controller
 {
-   public function index(Request $request)
+    public function index(Request $request)
     {
         $query = Processo::query();
 
+        // Pesquisa
         if ($request->filled('busca')) {
 
             $busca = $request->busca;
@@ -19,37 +20,68 @@ class ProcessoController extends Controller
             $query->where(function ($q) use ($busca) {
 
                 $q->where('num_processo', 'ILIKE', "%{$busca}%")
-                ->orWhere('tipo_processo', 'ILIKE', "%{$busca}%")
-                ->orWhere('desc_processo', 'ILIKE', "%{$busca}%");
+                    ->orWhere('desc_processo', 'ILIKE', "%{$busca}%")
+                    ->orWhere('comarca', 'ILIKE', "%{$busca}%")
+                    ->orWhere('tribunal_processo', 'ILIKE', "%{$busca}%");
 
             });
         }
 
-        if ($request->filled('status_processo')) {
-            $query->where('status_processo', $request->status_processo);
+        // Filtro por status
+        if ($request->filled('status')) {
+            $query->where('status_processo', $request->status);
         }
 
+        // Filtro por tipo
+        if ($request->filled('tipo')) {
+            $query->where('tipo_processo', $request->tipo);
+        }
+
+        // Ordenação
+        switch ($request->ordem) {
+
+            case 'antigos':
+                $query->orderBy('created_at', 'asc');
+                break;
+
+            case 'prazo':
+                $query->orderBy('data_abertura_processo', 'asc');
+                break;
+
+            default:
+                $query->orderBy('created_at', 'desc');
+                break;
+        }
+
+        // Processos
         $processos = $query
-            ->latest()
             ->paginate(10)
             ->withQueryString();
 
+        // Indicadores
         $totalProcessos = Processo::count();
 
-        $emAndamento = Processo::where('status_processo', 'andamento')->count();
+        $emAndamento = Processo::where(
+            'status_processo',
+            'andamento'
+        )->count();
 
-        $concluidos = Processo::where('status_processo', 'concluido')->count();
+        $concluidos = Processo::where(
+            'status_processo',
+            'concluido'
+        )->count();
 
-        $emPrazo = Processo::where('status_processo', true)
-            ->whereDate('data_abertura_processo', '>=', now())
-            ->count();
+        $vencidos = Processo::where(
+            'status_processo',
+            'vencido'
+        )->count();
 
         return view('processos.index', compact(
             'processos',
             'totalProcessos',
             'emAndamento',
             'concluidos',
-            'emPrazo'
+            'vencidos'
         ));
     }
 
@@ -64,7 +96,7 @@ class ProcessoController extends Controller
     {
         $dados = $request->validate([
             'num_processo' => 'required|string|max:100|unique:processos,num_processo',
-            'id_cliente' => 'required|string|max:100|',
+            'id_cliente' => 'required|string|max:100',
             'tipo_processo' => 'required|string|max:100',
             'desc_processo' => 'nullable|string|max:500',
             'data_abertura_processo' => 'nullable|date',
@@ -82,35 +114,56 @@ class ProcessoController extends Controller
             ->route('processos.index')
             ->with('sucesso', 'Processo criado com sucesso!');
     }
-    /**
-     * Display the specified resource.
-     */
+
+
     public function show(string $id)
     {
-        //
+        $processo = Processo::findOrFail($id);
+
+        return view('processos.show', compact('processo'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(string $id)
     {
-        //
+        $processo = Processo::findOrFail($id);
+
+        return view('processos.edit', compact('processo'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, string $id)
     {
-        //
+        $dados = $request->validate([
+            'num_processo' => 'required|string|max:100',
+            'id_cliente' => 'required|string|max:100',
+            'tipo_processo' => 'required|string|max:100',
+            'desc_processo' => 'nullable|string|max:500',
+            'data_abertura_processo' => 'nullable|date',
+            'vara_processo' => 'nullable|string|max:500',
+            'status_processo' => 'required|string|in:andamento,concluido,vencido',
+            'comarca' => 'nullable|string|max:500',
+            'tribunal_processo' => 'nullable|string|max:500',
+        ]);
+
+        $processo = Processo::findOrFail($id);
+
+        $processo->update($dados);
+
+        return redirect()
+            ->route('processos.index')
+            ->with('sucesso', 'Processo atualizado com sucesso!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(string $id)
     {
-        //
+        $processo = Processo::findOrFail($id);
+
+        $processo->delete();
+
+        return redirect()
+            ->route('processos.index')
+            ->with('sucesso', 'Processo excluído com sucesso!');
     }
 }

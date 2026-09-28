@@ -16,7 +16,7 @@
         </div>
         <div class="col-md-4 text-md-end">
           <a href="#" class="btn btn-warning btn-lg fw-bold px-4">
-            Agendar agora <i class="bi bi-chevron-right ms-1"></i>
+            Cadastrar agora <i class="bi bi-chevron-right ms-1"></i>
           </a>
         </div>
       </div>

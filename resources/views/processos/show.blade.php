@@ -7,9 +7,11 @@
     <div class="container mt-4">
 
     @include('partials.alerts')
-     <form action="{{ route('processos.store') }}" method="POST" enctype="multipart/form-data" class="form-processo">
-        <h1>Cadastrar Processo</h1>
-        @csrf
+
+     <form action="{{ route('processos.show', $processo) }}" method="POST" class="form-processo">
+
+        <h1>Visualizar Processo</h1>
+
         @include('processos._form')
 
     </form>
@@ -17,3 +19,5 @@
     </div>
 
 @endsection
+
+

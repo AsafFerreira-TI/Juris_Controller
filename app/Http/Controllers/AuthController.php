@@ -33,7 +33,7 @@ class AuthController extends Controller
 
         Produto::create($dados);
 
-        return redirect()->route('produtos.index')
+        return redirect()->route('home')
             ->with('sucesso', 'Produto criado com sucesso!');
     }
 
@@ -53,7 +53,11 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended(route('dashboard'));
+
+            return redirect()
+            ->route('home')
+            ->with('sucesso', 'Login efetuado com sucesso!');
+
         }
 
         return back()

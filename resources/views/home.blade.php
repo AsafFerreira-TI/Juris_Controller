@@ -3,6 +3,9 @@
 @section('title', 'Início')
 
 @section('content')
+
+@include('partials.alerts')
+
  <div class="row gy-4 mb-5 ml-0">
 <div class="py-6">
     <div class="position-relative">
