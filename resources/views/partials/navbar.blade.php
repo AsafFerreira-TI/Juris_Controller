@@ -117,8 +117,7 @@
         </div>
 
     </div>
-<<<<<<< Updated upstream
-=======
+
 
     <!-- NAVEGAÇÃO E ÍCONES -->
     <div class="collapse navbar-collapse" id="navbarConteudo">
@@ -159,7 +158,7 @@
     </div>
 
   </div>
->>>>>>> Stashed changes
+
 </nav>
 
 
