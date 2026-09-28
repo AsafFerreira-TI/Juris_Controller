@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+<<<<<<< Updated upstream
 use App\Http\Controllers\SobreController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PerfilController;
@@ -45,3 +46,18 @@ Route::get('/sobre', [SobreController::class, 'index'])->name('sobre');
 Route::get('/perfil', [PerfilController::class, 'index'])->name('perfil');
 
 Route::get('/servicos', [ServicosController::class, 'index'])->name('servicos');
+=======
+use App\Http\Controllers\SolucaoController;
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/solucoes', [SolucaoController::class, 'index'])->name('solucoes');
+Route::get('/recursos', function () {
+    return view('recursos');
+})->name('recursos');
+Route::get('/sobre', function () {
+    return view('sobre');
+})->name('sobre');
+Route::get('/contato', function () {
+    return view('contato');
+})->name('contato');
+>>>>>>> Stashed changes
