@@ -34,7 +34,7 @@ class BuscarProcessos implements ShouldQueue
 
          // 3. Monta o payload JSON com as credenciais
         $credenciais = json_encode([
-            'usuario' => $advogado->oab_advg,
+            'usuario' => $advogado->cpf_advg,
             'senha'   => $senhaDescrip
         ]);
 
