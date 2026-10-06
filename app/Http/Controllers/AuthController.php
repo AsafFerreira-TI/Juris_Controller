@@ -29,9 +29,8 @@ class AuthController extends Controller
             'password' => Hash::make($dados['password']),
         ]);
 
-        return redirect()
-            ->route('processos.index')
-            ->with('sucesso', 'Usuário cadastrado com sucesso!');
+        return redirect()->route('home')
+            ->with('sucesso', 'Produto criado com sucesso!');
     }
 
 

@@ -5,12 +5,14 @@
 <link rel="stylesheet" href="{{ asset('css/form.css') }}">
 
 <div class="container mt-4">
-    <h1>Entrar</h1>
+
 
     @include('partials.alerts')
 
 
     <form action="{{ route('login') }}" method="POST" class="form-processo">
+
+    <h1>Entrar</h1>
         @csrf
 
         {{-- E-mail --}}
