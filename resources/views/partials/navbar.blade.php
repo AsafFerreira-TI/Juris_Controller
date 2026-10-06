@@ -37,6 +37,17 @@
             <ul class="navbar-nav flex-row align-items-center gap-4 d-none d-lg-flex">
 
                <li class="nav-item">
+                @auth
+                <li class="nav-item">
+                    <a
+                        class="nav-link fw-medium {{ request()->routeIs('processos.index') ? 'text-white border-bottom border-warning border-2 pb-1' : 'text-secondary' }}"
+                        href="{{ route('processos.index') }}"
+                    >
+                        Processos
+                    </a>
+                </li>
+                @else
+                <li class="nav-item">
                     <a
                         class="nav-link fw-medium {{ request()->routeIs('home') ? 'text-white border-bottom border-warning border-2 pb-1' : 'text-secondary' }}"
                         href="{{ route('home') }}"
@@ -62,16 +73,9 @@
                         Sobre
                     </a>
                 </li>
-                @auth
-                <li class="nav-item">
-                    <a
-                        class="nav-link fw-medium {{ request()->routeIs('processos.index') ? 'text-white border-bottom border-warning border-2 pb-1' : 'text-secondary' }}"
-                        href="{{ route('processos.index') }}"
-                    >
-                        Processos
-                    </a>
-                </li>
                 @endauth
+
+
             </ul>
 
 
