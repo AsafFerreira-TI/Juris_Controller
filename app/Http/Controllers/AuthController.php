@@ -11,27 +11,23 @@ class AuthController extends Controller
 {
     public function register(Request $request)
     {
-        $dados = $request->validate([
-            'categoria_id' => 'required|exists:categorias,id',
-            'nome' => 'required|string|max:100|unique:produtos,nome',
-            'descricao' => 'nullable|string|max:500',
-            'preco' => 'required|numeric',
-            'ativo' => 'nullable|boolean',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+       $dados = $request->validate([
+            'nome_advg' => 'required|string|max:100',
+            'oab_advg' => 'required|string|max:20|unique:users,oab_advg',
+            'email_advg' => 'required|email|max:255|unique:users,email_advg',
+            'cpf_advg' => 'required|string|max:14|unique:users,cpf_advg',
+            'telefone_advg' => 'required|string|max:20',
+            'password' => 'required|string|min:6|confirmed',
         ]);
 
-        $dados['ativo'] = $request->has('ativo');
-        unset($dados['ativa']);
-
-        if ($request->hasFile('image')) {
-
-            $path = $request->file('image')
-                ->store('produtos', 'public');
-
-            $dados['image'] = $path;
-        }
-
-        Produto::create($dados);
+        User::create([
+            'nome_advg' => $dados['nome_advg'],
+            'oab_advg' => $dados['oab_advg'],
+            'email_advg' => $dados['email_advg'],
+            'cpf_advg' => $dados['cpf_advg'],
+            'telefone_advg' => $dados['telefone_advg'],
+            'password' => Hash::make($dados['password']),
+        ]);
 
         return redirect()->route('home')
             ->with('sucesso', 'Produto criado com sucesso!');
@@ -55,7 +51,7 @@ class AuthController extends Controller
 
 
             return redirect()
-            ->route('home')
+            ->route('processos.index')
             ->with('sucesso', 'Login efetuado com sucesso!');
 
         }

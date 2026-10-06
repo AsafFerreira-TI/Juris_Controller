@@ -1,10 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-4">
-    <h1>Criar conta</h1>
 
-    <form action="{{ route('register') }}" method="POST" class="mt-3">
+<link rel="stylesheet" href="{{ asset('css/form.css') }}">
+
+<div class="container mt-4">
+
+
+    <form action="{{ route('register') }}" method="POST" class="form-processo">
+        <h1>Criar conta</h1>
         @csrf
 
         {{-- Nome --}}
