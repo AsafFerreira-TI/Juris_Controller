@@ -1,0 +1,13 @@
+Para rodar os scripts completos no seu projeto...
+
+ 1. Navegue para a pasta Python e crie um virtual environment:
+    cd python
+    python -m venv .venv
+
+ 2. Ative o teu venv:
+    source .venv/bin/activate
+
+ 3. Instale as bibliotecas de requirement:
+    pip install -r requirements.txt
+
+ Espero que tenha ajudado. Tenham um bom dia!
