@@ -1,0 +1,305 @@
+.calendario-page {
+    width: 100%;
+    min-height: calc(100vh - 1px);
+    background: #fff;
+    color: #222;
+}
+
+.calendario-container {
+    width: min(1100px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 32px 0 48px;
+}
+
+.calendario-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    padding-bottom: 18px;
+    margin-bottom: 28px;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.calendario-titulo {
+    margin: 0;
+    font-size: 25px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #222;
+}
+
+.mes-selector-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.mes-selector-wrapper label {
+    font-size: 13px;
+    color: #555;
+}
+
+.mes-selector {
+    width: 190px;
+    height: 36px;
+    padding: 0 10px;
+    background: #fff;
+    border: 1px solid #bdbdbd;
+    border-radius: 2px;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.mes-selector:focus {
+    outline: none;
+    border-color: #777;
+}
+
+.calendario-section {
+    width: 100%;
+    margin-bottom: 36px;
+}
+
+.calendario-mes-header {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.calendario-mes-header h2 {
+    margin: 0;
+    font-size: 20px;
+    line-height: 1.3;
+    font-weight: 500;
+    color: #333;
+}
+
+.dias-semana,
+.calendario-grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.dias-semana {
+    border-top: 1px solid #d4d4d4;
+    border-left: 1px solid #d4d4d4;
+}
+
+.dias-semana div {
+    padding: 11px 5px;
+    background: #000000;
+    border-right: 1px solid #d4d4d4;
+    border-bottom: 1px solid #d4d4d4;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    font-style: bold;
+    color: #f5b400;
+}
+
+.calendario-grid {
+    border-left: 1px solid #d4d4d4;
+}
+
+.dia {
+    position: relative;
+    min-height: 92px;
+    padding: 9px;
+    background: #fff;
+    border-right: 1px solid #d4d4d4;
+    border-bottom: 1px solid #d4d4d4;
+}
+
+.dia-vazio {
+    background: #fafafa;
+}
+
+.dia-numero {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 29px;
+    height: 29px;
+    font-size: 13px;
+    color: #555555;
+
+}
+
+.dia.tem-audiencia {
+    cursor: pointer;
+}
+
+.dia.tem-audiencia:hover {
+    background: #f7f7f7;
+}
+
+.dia.tem-audiencia .dia-numero {
+    font-weight: 700;
+    border: 1px solid #333;
+    border-radius: 50%;
+}
+
+.indicador-audiencia {
+    display: block;
+    margin-top: 7px;
+    font-size: 10px;
+    line-height: 1.25;
+    color: #555;
+}
+
+.indicador-audiencia::before {
+    content: "●";
+    margin-right: 4px;
+    font-size: 8px;
+    color: #333;
+}
+
+.audiencias-section {
+    padding-top: 24px;
+    border-top: 1px solid #d8d8d8;
+}
+
+.audiencias-header {
+    margin-bottom: 17px;
+}
+
+.audiencias-header h2 {
+    margin: 0;
+    font-size: 19px;
+    line-height: 1.3;
+    font-weight: 500;
+    color: #333;
+}
+
+.audiencias-conteudo {
+    width: 100%;
+}
+
+.audiencias-vazio {
+    padding: 22px;
+    background: #f7f7f7;
+    border: 1px solid #dedede;
+    text-align: center;
+    font-size: 13px;
+    color: #666;
+}
+
+.audiencia-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.audiencia-item {
+    padding: 18px;
+    background: #fff;
+    border: 1px solid #d8d8d8;
+}
+
+.audiencia-horario {
+    margin-bottom: 7px;
+    font-size: 17px;
+    font-weight: 600;
+    color: #222;
+}
+
+.audiencia-tipo {
+    margin-bottom: 15px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #444;
+}
+
+.audiencia-detalhes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 30px;
+}
+
+.audiencia-campo {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #555;
+}
+
+.audiencia-campo strong {
+    color: #333;
+}
+
+.audiencia-observacoes {
+    grid-column: 1 / -1;
+    margin-top: 5px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+@media (max-width: 768px) {
+    .calendario-container {
+        width: calc(100% - 24px);
+        padding-top: 22px;
+    }
+
+    .calendario-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    .mes-selector-wrapper {
+        width: 100%;
+    }
+
+    .mes-selector {
+        flex: 1;
+        width: auto;
+    }
+
+    .dia {
+        min-height: 72px;
+        padding: 7px;
+    }
+
+    .audiencia-detalhes {
+        grid-template-columns: 1fr;
+    }
+
+    .audiencia-observacoes {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .calendario-container {
+        width: calc(100% - 16px);
+    }
+
+    .calendario-titulo {
+        font-size: 21px;
+    }
+
+    .calendario-mes-header h2 {
+        font-size: 18px;
+    }
+
+    .dias-semana div {
+        padding: 8px 2px;
+        font-size: 10px;
+    }
+
+    .dia {
+        min-height: 62px;
+        padding: 5px;
+    }
+
+    .dia-numero {
+        width: 25px;
+        height: 25px;
+        font-size: 11px;
+    }
+
+    .indicador-audiencia {
+        font-size: 8px;
+    }
+}
+

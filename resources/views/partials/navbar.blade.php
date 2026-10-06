@@ -46,6 +46,14 @@
                         Processos
                     </a>
                 </li>
+                  <li class="nav-item">
+                    <a
+                        class="nav-link fw-medium {{ request()->routeIs('agenda.index') ? 'text-white border-bottom border-warning border-2 pb-1' : 'text-secondary' }}"
+                        href="{{ route('agenda.index') }}"
+                    >
+                        Calendário
+                    </a>
+                </li>
                 @else
                 <li class="nav-item">
                     <a

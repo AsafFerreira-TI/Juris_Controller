@@ -64,3 +64,8 @@ use App\Http\Controllers\ConsultaController;
 
 Route::get('/consulta', [ConsultaController::class, 'index'])->name('consulta.index');
 Route::post('/consulta', [ConsultaController::class, 'buscar'])->name('consulta.buscar');
+
+use App\Http\Controllers\AgendaController;
+
+Route::get('/calendario-audiencias', [AgendaController::class, 'index'])
+    ->name('agenda.index');
