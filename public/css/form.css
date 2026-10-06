@@ -1,0 +1,203 @@
+/* =========================================
+   FORMULÁRIO DE PROCESSO
+========================================= */
+
+.form-processo {
+    max-width: 850px;
+    margin: 35px auto 50px;
+    padding: 30px;
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+/* Título */
+
+.form-processo h1{
+    margin-bottom: 28px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eeeeee;
+
+}
+.form-processo-titulo {
+    margin-bottom: 28px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.form-processo-titulo h2 {
+    margin: 0;
+    color: #171717;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.form-processo-titulo p {
+    margin: 6px 0 0;
+    color: #777;
+    font-size: 13px;
+}
+
+/* Campos */
+
+.form-processo .mb-3,
+.form-processo .campo {
+    margin-bottom: 20px !important;
+}
+
+.form-processo label {
+    display: block;
+    margin-bottom: 7px;
+    color: #333;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Inputs e selects */
+
+.form-processo input,
+.form-processo select {
+    width: 100%;
+    height: 44px;
+    padding: 0 13px;
+
+    border: 1px solid #d8d8d8;
+    border-radius: 6px;
+
+    background-color: #fff;
+    color: #333;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+/* Placeholder */
+
+.form-processo input::placeholder {
+    color: #aaa;
+}
+
+/* Focus */
+
+.form-processo input:focus,
+.form-processo select:focus {
+    border-color: #c99500;
+
+    box-shadow:
+        0 0 0 3px rgba(201, 149, 0, 0.12);
+
+    background-color: #fff;
+}
+
+/* Select */
+
+.form-processo select {
+    cursor: pointer;
+}
+
+/* Erros */
+
+.form-processo .text-danger {
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+/* =========================================
+   BOTÕES
+========================================= */
+
+.form-processo .d-flex {
+    margin-top: 25px;
+}
+
+/* Botão principal */
+
+.form-processo .btn-primary {
+    min-width: 120px;
+    height: 42px;
+
+    padding: 0 20px;
+
+    border: none;
+    border-radius: 6px;
+
+    background-color: #c99500;
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.form-processo .btn-primary:hover {
+    background-color: #ad7f00;
+
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.12);
+
+    transform: translateY(-1px);
+}
+
+/* Botão cancelar */
+
+.form-processo .btn-secondary {
+    min-width: 100px;
+    height: 42px;
+
+    padding: 0 20px;
+
+    border: 1px solid #d5d5d5;
+    border-radius: 6px;
+
+    background-color: #f5f5f5;
+    color: #444;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.form-processo .btn-secondary:hover {
+    background-color: #e9e9e9;
+    border-color: #c8c8c8;
+    color: #222;
+}
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .form-processo {
+        margin: 20px 15px 40px;
+        padding: 20px;
+    }
+
+    .form-processo-titulo h2 {
+        font-size: 21px;
+    }
+
+    .form-processo .d-flex {
+        flex-direction: column;
+    }
+
+    .form-processo .btn-primary,
+    .form-processo .btn-secondary {
+        width: 100%;
+    }
+}

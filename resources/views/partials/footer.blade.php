@@ -16,7 +16,7 @@
         </div>
         <div class="col-md-4 text-md-end">
           <a href="#" class="btn btn-warning btn-lg fw-bold px-4">
-            Agendar agora <i class="bi bi-chevron-right ms-1"></i>
+            Cadastrar agora <i class="bi bi-chevron-right ms-1"></i>
           </a>
         </div>
       </div>
@@ -30,7 +30,10 @@
           <div class="border border-warning border-2 rounded-circle p-2 me-2 d-inline-flex justify-content-center align-items-center" style="width: 60px; height: 60px;">
           <img src="{{ asset('img/JurisControl.png') }}" alt="Juris Control" class="img-full rounded-circle" width="165%">
           </div>
-          <span class="fs-4 fw-bold fst-italic text-white"><span class="fw-normal">JURIS</span> CONTROL</span>
+
+         
+          <span class="fs-4 fw-bold fst-italic text-white"><span class="fw-normal">JURIS</span>CONTROL</span>
+
         </div>
         <p class="text-secondary small">
           Soluções completas para gestão jurídica, trazendo mais controle, segurança e eficiência para o seu escritório.

@@ -1,0 +1,8 @@
+.alerta-flutuante {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    z-index: 9999;
+    min-width: 350px;
+    max-width: 500px;
+}

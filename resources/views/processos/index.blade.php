@@ -6,10 +6,12 @@
 
 <link rel="stylesheet" href="{{ asset('css/processos.css') }}">
 
+@include('partials.alerts')
+
 <div class="processos-page">
 
     {{-- BANNER --}}
-
+<!--
     <section class="processos-hero">
 
         <div class="processos-hero-content">
@@ -31,13 +33,12 @@
         </div>
 
     </section>
+-->
 
 
     <main class="processos-container">
 
-        {{-- =========================
-             INDICADORES
-        ========================== --}}
+        {{-- INDICADORES --}}
 
         <section class="processos-stats">
 
@@ -52,11 +53,7 @@
                 </div>
 
                 <div class="stat-number">
-                    {{ $totalProcessos ?? 00 }}
-                </div>
-
-                <div class="stat-change stat-up">
-                    ↗ +12% no último mês
+                    {{ $totalProcessos ?? '' }}
                 </div>
 
             </div>
@@ -76,10 +73,6 @@
                     {{ $emAndamento ?? '' }}
                 </div>
 
-                <div class="stat-change stat-up">
-                    ↗ +8% no último mês
-                </div>
-
             </div>
 
 
@@ -94,11 +87,7 @@
                 </div>
 
                 <div class="stat-number">
-                    {{ $concluidos ?? 00 }}
-                </div>
-
-                <div class="stat-change stat-up">
-                    ↗ +24% no último mês
+                    {{ $concluidos ?? '' }}
                 </div>
 
             </div>
@@ -111,36 +100,11 @@
                 </div>
 
                 <div class="stat-title">
-                    Em prazo
+                    Vencidos
                 </div>
 
                 <div class="stat-number">
-                    {{ $emPrazo ?? 37 }}
-                </div>
-
-                <div class="stat-change stat-down">
-                    ↗ -6% no último mês
-                </div>
-
-            </div>
-
-
-            <div class="processo-stat">
-
-                <div class="stat-icon">
-                    <i class="fa-regular fa-calendar"></i>
-                </div>
-
-                <div class="stat-title">
-                    Vencendo em breve
-                </div>
-
-                <div class="stat-number">
-                    {{ $vencendo ?? 00 }}
-                </div>
-
-                <div class="stat-change stat-down">
-                    ↗ +3% no último mês
+                    {{ $vencidos ?? 0 }}
                 </div>
 
             </div>
@@ -156,24 +120,22 @@
             class="filtros"
             method="GET"
             action="{{ route('processos.index') }}"
-        >
+            >
 
+            {{-- Pesquisa --}}
             <div class="campo">
-
                 <label>Pesquisar</label>
 
                 <input
                     type="text"
                     name="busca"
                     value="{{ request('busca') }}"
-                    placeholder="Buscar por número, parte, assunto ou cliente..."
+                    placeholder="Buscar por número, descrição ou cliente..."
                 >
-
             </div>
 
-
+            {{-- Status --}}
             <div class="campo">
-
                 <label>Status</label>
 
                 <select name="status">
@@ -181,287 +143,329 @@
                     <option value="">Todos</option>
 
                     <option value="andamento"
-                        {{ request('status_processo') == 'andamento' ? 'selected' : '' }}>
+                        {{ request('status') == 'andamento' ? 'selected' : '' }}>
                         Em andamento
                     </option>
 
                     <option value="analise"
-                        {{ request('status_processo') == 'analise' ? 'selected' : '' }}>
+                        {{ request('status') == 'analise' ? 'selected' : '' }}>
                         Em análise
                     </option>
 
                     <option value="pendente"
-                        {{ request('status_processo') == 'pendente' ? 'selected' : '' }}>
+                        {{ request('status') == 'pendente' ? 'selected' : '' }}>
                         Pendente
                     </option>
 
                     <option value="vencido"
-                        {{ request('status_processo') == 'vencido' ? 'selected' : '' }}>
+                        {{ request('status') == 'vencido' ? 'selected' : '' }}>
                         Vencido
                     </option>
 
                 </select>
-
             </div>
 
-
+            {{-- Tipo --}}
             <div class="campo">
-
                 <label>Tipo de processo</label>
 
                 <select name="tipo">
 
                     <option value="">Todos</option>
-                    <option value="civel">Cível</option>
-                    <option value="trabalhista">Trabalhista</option>
-                    <option value="familia">Família</option>
-                    <option value="execucao">Execução</option>
-                    <option value="constitucional">Constitucional</option>
+
+                    <option value="civel"
+                        {{ request('tipo') == 'civel' ? 'selected' : '' }}>
+                        Cível
+                    </option>
+
+                    <option value="trabalhista"
+                        {{ request('tipo') == 'trabalhista' ? 'selected' : '' }}>
+                        Trabalhista
+                    </option>
+
+                    <option value="familia"
+                        {{ request('tipo') == 'familia' ? 'selected' : '' }}>
+                        Família
+                    </option>
+
+                    <option value="execucao"
+                        {{ request('tipo') == 'execucao' ? 'selected' : '' }}>
+                        Execução
+                    </option>
+
+                    <option value="constitucional"
+                        {{ request('tipo') == 'constitucional' ? 'selected' : '' }}>
+                        Constitucional
+                    </option>
 
                 </select>
-
             </div>
 
-
+            {{-- Ordenação --}}
             <div class="campo">
-
                 <label>Ordenar por</label>
 
                 <select name="ordem">
 
-                    <option value="recentes">
+                    <option value="recentes"
+                        {{ request('ordem', 'recentes') == 'recentes' ? 'selected' : '' }}>
                         Mais recentes
                     </option>
 
-                    <option value="antigos">
+                    <option value="antigos"
+                        {{ request('ordem') == 'antigos' ? 'selected' : '' }}>
                         Mais antigos
                     </option>
 
-                    <option value="prazo">
+                    <option value="prazo"
+                        {{ request('ordem') == 'prazo' ? 'selected' : '' }}>
                         Prazo
                     </option>
 
                 </select>
-
             </div>
 
-
-            <button>
-            <a
-                        href="{{ route('processos.create') }}"
-                        class="text-decoration-none"
-
-            >
-                + &nbsp; Novo processo
-            </a>
+            {{-- Botão filtrar --}}
+            <button type="submit" class="btn btn-primary">
+                Filtrar
             </button>
 
         </form>
 
+{{-- =========================
+TABELA DE PROCESSOS
+========================== --}}
 
-        {{-- =========================
-             TÍTULO
-        ========================== --}}
+<div class="lista-header">
 
-        <div class="lista-header">
+<h2>Processos cadastrados</h2>
 
-            <h2>
-                Lista de processos
-            </h2>
+<p>
+    Visualize e gerencie os processos cadastrados no sistema.
+</p>
 
-            <p>
-                Mostrando
-                {{ isset($processos) ? $processos->count() : 10 }}
-                de
-                {{ $totalProcessos ?? 00 }}
-                processos
-            </p>
+</div>
 
-        </div>
+<div class="tabela-processos">
 
+<table>
 
-        {{-- =========================
-             TABELA
-        ========================== --}}
+    <thead>
 
-        <div class="tabela-processos">
+        <tr>
 
-            <table>
+            <th>Nº do processo</th>
 
-                <thead>
+            <th>Comarca</th>
 
-                    <tr>
+            <th>Tribunal</th>
 
-                        <th>Nº do processo</th>
-                        <th>Cliente</th>
-                        <th>Tipo</th>
-                        <th>Data abertura</th>
-                        <th>Vara</th>
-                        <th>Status</th>
-                        <th>Comarca</th>
-                        <th>Tribunal</th>
-                        <th>Ações</th>
+            <th>Tipo</th>
 
-                    </tr>
+            <th>Status</th>
 
-                </thead>
+            <th>Data de abertura</th>
 
+            <th>Ações</th>
 
-                <tbody>
+        </tr>
 
-                    @forelse($processos ?? [] as $processo)
+    </thead>
 
-                        <tr>
 
-                            <td>
+    <tbody>
 
-                                <span class="processo-documento">
-                                    ▤
-                                </span>
+        @forelse ($processos as $processo)
 
-                                <span class="numero-processo">
-                                    {{ $processo->num_processo }}
-                                </span>
+            <tr>
 
-                            </td>
+                {{-- Número do processo --}}
+                <td>
 
-                            <td>
-                                {{ $processo->id_cliente }}
-                            </td>
+                    <span class="processo-documento">
+                        <i class="fa-regular fa-file-lines"></i>
+                    </span>
 
-                            <td>
-                                {{ $processo->tipo_processo }}
-                            </td>
+                    <strong class="numero-processo">
+                        {{ $processo->num_processo }}
+                    </strong>
 
-                            <td>
-                                {{ $processo->data_abertura_processo }}
-                            </td>
+                </td>
 
-                            <td>
-                                {{ $processo->vara_processo }}
-                            </td>
 
-                            <td>
+                {{-- Comarca --}}
+                <td>
 
-                                @php
-                                    $status = strtolower($processo->status_processo ?? '');
-                                @endphp
+                    {{ $processo->comarca ?? 'Não informado' }}
 
-                                @if($status == 'andamento')
+                </td>
 
-                                    <span class="status status-andamento">
-                                         Em andamento
-                                    </span>
 
-                                @elseif($status == 'analise')
+                {{-- Tribunal --}}
+                <td>
 
-                                    <span class="status status-analise">
-                                         Em análise
-                                    </span>
+                    {{ $processo->tribunal_processo ?? 'Não informado' }}
 
-                                @elseif($status == 'pendente')
+                </td>
 
-                                    <span class="status status-pendente">
-                                         Pendente
-                                    </span>
 
-                                @elseif($status == 'vencido')
+                {{-- Tipo --}}
+                <td>
 
-                                    <span class="status status-vencido">
-                                         Vencido
-                                    </span>
+                    {{ $processo->tipo_processo ?? 'Não informado' }}
 
-                                @else
+                </td>
 
-                                    <span class="status status-andamento">
-                                         {{ $processo->status_processo }}
-                                    </span>
 
-                                @endif
+                {{-- Status --}}
+                <td>
 
-                            </td>
+                    @php
 
-                            <td>
-                                {{ $processo->comarca }}
-                            </td>
-                            
-                            <td>
-                                {{ $processo->tribunal_processo }}
-                            </td>
+                        $status = strtolower(
+                            trim($processo->status_processo ?? '')
+                        );
 
+                    @endphp
 
-                            <td>
 
-                                <div class="acoes">
+                    @if ($status === 'andamento' || $status === 'em andamento')
 
-                                <!--
-                                    <a
-                                        href="{{ route('processos.show', $processo) }}"
-                                        class="acao"
-                                        title="Visualizar"
-                                    >
-                                        ◉
-                                    </a>
+                        <span class="status status-andamento">
+                            Em andamento
+                        </span>
 
-                                    <a
-                                        href="{{ route('processos.edit', $processo) }}"
-                                        class="acao"
-                                        title="Editar"
-                                    >
-                                        ▣
-                                    </a>
--->
-                                    <button
-                                        type="button"
-                                        class="acao"
-                                        title="Mais opções"
-                                    >
-                                        ⋮
-                                    </button>
+                    @elseif ($status === 'vencido')
 
-                                </div>
+                        <span class="status status-vencido">
+                            Vencido
+                        </span>
 
-                            </td>
+                    @elseif ($status === 'concluido')
 
-                        </tr>
-                                            @empty
+                    <span class="status status-concluido">
+                        Concluído
+                    </span>
 
-                        {{-- Dados demonstrativos caso ainda não existam processos --}}
+                    @else
 
-                        <tr>
+                        <span class="status">
+                            {{ $processo->status_processo ?? 'Não informado' }}
+                        </span>
 
-                            <td>
-                                <span class="processo-documento">▤</span>
-                                0001234-56.2025.8.26.0100
-                            </td>
+                    @endif
 
-                            <td>João Silva</td>
+                </td>
 
-                            <td>Indenização por Danos Morais</td>
 
-                            <td>Cível</td>
+                {{-- Data de abertura --}}
+                <td>
 
-                            <td>
-                                <span class="status status-andamento">
-                                    ● Em andamento
-                                </span>
-                            </td>
+                    @if (!empty($processo->data_abertura_processo))
 
-                            <td>15/06/2025</td>
+                        {{ \Carbon\Carbon::parse(
+                            $processo->data_abertura_processo
+                        )->format('d/m/Y') }}
 
-                            <td>◉ &nbsp; ▣ &nbsp; ⋮</td>
+                    @else
 
-                        </tr>
+                        <span style="color: #999;">
+                            Não informado
+                        </span>
 
+                    @endif
 
-                        <tr>
+                </td>
 
-                    @endforelse
-                </tbody>
 
-            </table>
+                {{-- Ações --}}
+                <td>
 
-        </div>
+                    <div class="acoes">
+
+                        {{-- Visualizar --}}
+                        <a
+                            href="{{ route('processos.show', ['processo' => $processo->id]) }}"
+                            class="acao"
+                            title="Visualizar"
+                        >
+                            <i class="fa-regular fa-eye"></i>
+                        </a>
+
+                        {{-- Editar --}}
+                        <a
+                            href="{{ route('processos.edit', ['processo' => $processo->id]) }}"
+                            class="acao"
+                            title="Editar"
+                        >
+                            <i class="fa-solid fa-pen"></i>
+                        </a>
+
+
+                        {{-- Excluir --}}
+                        <form
+                            action="{{ route('processos.destroy', $processo->id) }}"
+                            method="POST"
+                            style="display: inline;"
+                            onsubmit="return confirm('Tem certeza que deseja excluir este processo?')"
+                        >
+
+                            @csrf
+
+                            @method('DELETE')
+
+                            <button
+                                type="submit"
+                                class="acao"
+                                title="Excluir"
+                            >
+                                <i class="fa-regular fa-trash-can"></i>
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+        @empty
+
+            <tr>
+
+                <td
+                    colspan="8"
+                    style="
+                        text-align: center;
+                        padding: 45px 20px;
+                        color: #777;
+                    "
+                >
+
+                    <i
+                        class="fa-regular fa-folder-open"
+                        style="
+                            font-size: 30px;
+                            color: #c89000;
+                            margin-bottom: 10px;
+                        "
+                    ></i>
+
+                    <br>
+
+                    Nenhum processo encontrado.
+
+                </td>
+
+            </tr>
+
+        @endforelse
+
+    </tbody>
+
+</table>
+</div>
 
 
         {{-- =========================
@@ -480,18 +484,6 @@
 
             <a href="#" class="pagina">
                 2
-            </a>
-
-            <a href="#" class="pagina">
-                3
-            </a>
-
-            <a href="#" class="pagina">
-                4
-            </a>
-
-            <a href="#" class="pagina">
-                5
             </a>
 
             <a href="#" class="pagina">
@@ -526,13 +518,14 @@
                 </div>
 
             </div>
-
-<!--
             <a
-                href=""
-                class="btn-novo"
-            >-->
-                + &nbsp; Novo processo
+            href="{{ route('processos.create') }}"
+            class="btn btn-success mt-2"
+
+            >
+
+            + Novo processo
+
             </a>
 
         </section>
