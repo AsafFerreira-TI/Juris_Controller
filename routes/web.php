@@ -60,3 +60,7 @@ Route::get('/contato', function () {
     return view('contato');
 })->name('contato');
 
+use App\Http\Controllers\ConsultaController;
+
+Route::get('/consulta', [ConsultaController::class, 'index'])->name('consulta.index');
+Route::post('/consulta', [ConsultaController::class, 'buscar'])->name('consulta.buscar');
