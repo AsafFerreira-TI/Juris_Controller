@@ -46,8 +46,10 @@ class BuscarProcessos implements ShouldQueue
         // 4. Executa o script Python passando as credenciais via argumento
         $resultado = Process::run([
             'python3',
-            base_path('python/busca_processos.py'),
-            $credenciais
+            base_path('python/factory_bot.py'),
+            $credenciais,
+            $this->sistemaOrigem,
+            $this->numeroProcesso
         ]);
 
         // 5. Trata o retorno do Python
@@ -57,7 +59,7 @@ class BuscarProcessos implements ShouldQueue
             // Ex: ProcessoService::salvar($dadosColetados);
         } else {
             // Trata erros de execução (Logar o erro para monitoramento)
-            \Log::error('Erro no robô Python: ' . $resultado->errorOutput());
+            \Log::error('Erro no Bot ({$this->sistemaOrigem}): ' . $resultado->errorOutput());
         }
     }
 }
