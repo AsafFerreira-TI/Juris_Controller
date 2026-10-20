@@ -55,9 +55,41 @@ class BuscarProcessos implements ShouldQueue
         // 5. Trata o retorno do Python
         if ($resultado->successful()) {
             $dadosColetados = json_decode($resultado->output(), true);
-            // Aqui chama-se a lógica para salvar no Banco de Dados (updateOrCreate)
-            // Ex: ProcessoService::salvar($dadosColetados);
-        } else {
+
+            if (isset($dados['sucesso']) && $dados['sucesso']) {
+
+                // 1. Atualiza ou Cria o processo usando o 'num_processo' como identificador exclusivo
+                $processo = \App\Models\Processo::updateOrCreate(
+                    ['num_processo' => $dados['processo']['num_processo']],
+                    [
+                        'id_advg'                => $this->userId, // Vincula ao advogado que disparou o bot
+                        'id_cliente'             => $this->idCliente ?? null, // Caso vinculem a um cliente na tela
+                        'tipo_processo'          => $dados['processo']['tipo_processo'],
+                        'vara_processo'          => $dados['processo']['vara_processo'],
+                        'comarca'                => $dados['processo']['comarca'],
+                        'tribunal_processo'      => $dados['processo']['tribunal_processo'],
+                        'status_processo'        => $dados['processo']['status_processo'],
+                        'data_abertura_processo' => $dados['processo']['data_abertura_processo'],
+                    ]
+                );
+
+                // 2. Passa um loop nas audiências retornadas e vincula ao ID do processo gerado acima
+                if (!empty($dados['audiencias'])) {
+                    foreach ($dados['audiencias'] as $aud) {
+                        $processo->audiencias()->updateOrCreate(
+                            ['data_audiencia' => $aud['data_audiencia']], // Evita duplicar audiência no mesmo horário
+                            [
+                                'tipo_audiencia'   => $aud['tipo_audiencia'],
+                                'local_audiencia'  => $aud['local_audiencia'],
+                                'status_audiencia' => $aud['status_audiencia'],
+                                'link_audiencia'   => $aud['link_audiencia'],
+                            ]
+                        );
+                    }
+                }
+            }
+        }
+        else {
             // Trata erros de execução (Logar o erro para monitoramento)
             \Log::error('Erro no Bot ({$this->sistemaOrigem}): ' . $resultado->errorOutput());
         }

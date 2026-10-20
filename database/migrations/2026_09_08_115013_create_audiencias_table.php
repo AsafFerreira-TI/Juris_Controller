@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('local_audiencia');
             $table->string('status_audiencia');
             $table->string('obs_audiencia');
+            $table->text('link_virtual')->nullable();
 
             $table->timestamps();
         });

@@ -12,7 +12,7 @@ class Processo extends Model
         'id_advg',
         'id_cliente',
         'num_processo',
-        'tipo_processo',
+        'tipo_processo', // esta é a "classe"
         'desc_processo',
         'data_abertura_processo',
         'vara_processo',
@@ -20,4 +20,9 @@ class Processo extends Model
         'comarca',
         'tribunal_processo',
     ];
+
+    public function audiencias()
+    {
+        return $this->hasMany(Audiencias::class, 'id_processo');
+    }
 }
