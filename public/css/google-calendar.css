@@ -1,0 +1,80 @@
+.gcal-page {
+    --gcal-border: #d4d4d4;
+    --gcal-text: #333;
+    --gcal-muted: #666;
+    --gcal-accent: #f5b400;
+    color: var(--gcal-text);
+    background: #fff;
+    width: 100%;
+    padding: 8px 0 28px;
+}
+.gcal-page * { box-sizing: border-box; }
+.gcal-heading {
+    display: flex; align-items: end; justify-content: space-between;
+    gap: 20px; margin-bottom: 24px; flex-wrap: wrap;
+}
+.gcal-heading h1 { margin: 0 0 6px; font-size: 25px; font-weight: 600; }
+.gcal-heading p { margin: 0; color: var(--gcal-muted); font-size: 14px; }
+.gcal-month-picker { display: grid; gap: 6px; min-width: 190px; font-size: 13px; }
+.gcal-month-picker select {
+    background: #fff; border: 1px solid #bbb; border-radius: 4px;
+    min-height: 40px; padding: 8px 12px; color: #333; font: inherit;
+}
+.gcal-layout {
+    display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(280px, .9fr);
+    gap: 24px; align-items: start;
+}
+.gcal-calendar-panel, .gcal-details {
+    background: #fff; border: 1px solid #dedede; border-radius: 4px; min-width: 0;
+}
+.gcal-calendar-title {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 16px; border-bottom: 1px solid #dedede;
+}
+.gcal-calendar-title h2 { font-size: 19px; margin: 0; font-weight: 500; text-align: center; }
+.gcal-nav {
+    border: 1px solid #ccc; background: #fff; color: #333; width: 34px; height: 34px;
+    border-radius: 4px; font-size: 24px; cursor: pointer; line-height: 1;
+}
+.gcal-nav:hover { background: #f5f5f5; }
+.gcal-weekdays, .gcal-days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); }
+.gcal-weekdays { background: #111; color: var(--gcal-accent); font-size: 12px; font-weight: 600; text-align: center; }
+.gcal-weekdays div { padding: 11px 3px; }
+.gcal-days { border-left: 1px solid var(--gcal-border); }
+.gcal-day {
+    min-width: 0; min-height: 86px; padding: 8px 6px; display: flex; flex-direction: column;
+    align-items: center; gap: 5px; border: 0; border-right: 1px solid var(--gcal-border);
+    border-bottom: 1px solid var(--gcal-border); background: #fff; color: #555;
+    font: inherit; cursor: pointer;
+}
+.gcal-day:hover { background: #f7f7f7; }
+.gcal-day-empty { background: #fafafa; cursor: default; }
+.gcal-day-number { display: inline-flex; align-items: center; justify-content: center; width: 29px; height: 29px; }
+.gcal-day.has-events .gcal-day-number { border: 1px solid #333; border-radius: 50%; font-weight: 700; color: #222; }
+.gcal-day.is-selected { background: #fff6d9; box-shadow: inset 0 0 0 2px #d7a100; }
+.gcal-day-indicator { color: #555; font-size: 10px; line-height: 1.2; text-align: center; overflow-wrap: anywhere; }
+.gcal-day-indicator::before { content: "●"; font-size: 8px; margin-right: 3px; }
+.gcal-legend { font-size: 12px; color: #666; margin: 12px 15px; }
+.gcal-legend span { color: #333; margin-right: 5px; font-size: 10px; }
+.gcal-details { padding: 18px; }
+.gcal-details > h2 { font-size: 19px; line-height: 1.35; font-weight: 500; margin: 0 0 16px; }
+.gcal-empty { font-size: 14px; line-height: 1.5; color: #777; margin: 0; }
+.gcal-event-card { padding: 14px 0; border-top: 1px solid #e5e5e5; }
+.gcal-event-card:first-child { padding-top: 0; border-top: 0; }
+.gcal-event-card h3 { font-size: 16px; margin: 0 0 10px; line-height: 1.4; }
+.gcal-event-meta { font-size: 13px; line-height: 1.5; margin: 6px 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.gcal-event-meta strong { font-weight: 600; }
+.gcal-event-link { display: inline-block; color: #795700; text-decoration: underline; font-size: 13px; margin-top: 8px; }
+.gcal-feedback { min-height: 20px; font-size: 12px; color: #666; margin: 12px 0 0; }
+@media (max-width: 850px) {
+    .gcal-layout { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) {
+    .gcal-heading h1 { font-size: 22px; }
+    .gcal-day { min-height: 64px; padding: 6px 2px; }
+    .gcal-day-number { width: 25px; height: 25px; }
+    .gcal-day-indicator { font-size: 9px; }
+    .gcal-calendar-title { padding: 10px; }
+    .gcal-calendar-title h2 { font-size: 16px; }
+    .gcal-details { padding: 14px; }
+}
