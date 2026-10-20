@@ -34,5 +34,13 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
+    
+    'google_calendar' => [
+    'id' => env('GOOGLE_CALENDAR_ID'),
+    'credentials' => env(
+        'GOOGLE_CALENDAR_CREDENTIALS',
+        'storage/app/google-calendar/credentials.json'
+    ),
+],
 
 ];
