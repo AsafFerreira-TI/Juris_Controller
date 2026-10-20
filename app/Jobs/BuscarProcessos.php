@@ -6,6 +6,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 
 use App\Models\User;
+use App\Models\Processo;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
@@ -17,10 +18,14 @@ class BuscarProcessos implements ShouldQueue
     use Queueable, Dispatchable, InteractsWithQueue, SerializesModels;
 
     protected $userId;
+    protected $numeroProcesso;
+    protected $sistemaOrigem;
 
-    public function __construct($userId)
+    public function __construct($userId, $numeroProcesso, $sistemaOrigem)
     {
         $this->userId = $userId;
+        $this->numeroProcesso = $numeroProcesso;
+        $this->sistemaOrigem = $sistemaOrigem;
     }
 
     // Execute the job.
