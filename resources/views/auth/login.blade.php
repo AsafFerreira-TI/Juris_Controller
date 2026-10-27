@@ -3,6 +3,7 @@
 @section('content')
 
 <link rel="stylesheet" href="{{ asset('css/form.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/notifications.css') }}">
 
 <div class="container mt-4">
 
@@ -54,4 +55,20 @@
         </a>
     </form>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const toast = document.getElementById('app-toast');
+
+        if (toast) {
+            setTimeout(function () {
+                toast.style.transition = 'opacity .3s ease';
+                toast.style.opacity = '0';
+
+                setTimeout(function () {
+                    toast.remove();
+                }, 300);
+            }, 5000);
+        }
+    });
+</script>
 @endsection
