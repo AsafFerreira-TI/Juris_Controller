@@ -13,10 +13,10 @@ class GoogleCalendarController extends Controller
 {
     public function index(): View
     {
-        return view('calendario.google', [
-            'anoInicial' => now()->year,
-            'mesInicial' => now()->month,
-        ]);
+    return view('calendario.google', [
+    'anoInicial' => now()->year,
+    'mesInicial' => now()->month,
+]);
     }
 
     public function events(Request $request, GoogleCalendarService $calendar): JsonResponse

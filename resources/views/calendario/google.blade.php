@@ -8,7 +8,7 @@
      data-initial-month="{{ $mesInicial }}">
     <div class="gcal-heading">
         <div>
-            <h1>Calendário de audiências</h1>
+            <h1">Calendário de audiências</h1>
             <p>Consulte os eventos do calendário integrado.</p>
         </div>
         <label class="gcal-month-picker">

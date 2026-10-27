@@ -67,13 +67,15 @@ Route::post('/consulta', [ConsultaController::class, 'buscar'])->name('consulta.
 
 use App\Http\Controllers\AgendaController;
 
-Route::get('/calendario-audiencias', [AgendaController::class, 'index'])
-    ->name('agenda.index');
-
 use App\Http\Controllers\GoogleCalendarController;
 
+Route::middleware('auth')
+    ->prefix('agenda-google')
+    ->name('google-calendar.')
+    ->group(function () {
+        Route::get('/', [GoogleCalendarController::class, 'index'])
+            ->name('index');
 
-Route::middleware('auth')->prefix('agenda-google')->name('google-calendar.')->group(function () {
-    Route::get('/', [GoogleCalendarController::class, 'index'])->name('index');
-    Route::get('/eventos', [GoogleCalendarController::class, 'events'])->name('events');
-});
+        Route::get('/eventos', [GoogleCalendarController::class, 'events'])
+            ->name('events');
+    });
