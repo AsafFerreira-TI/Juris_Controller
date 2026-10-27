@@ -6,7 +6,8 @@ import json
 
 try:
     from bots.bot_esaj import rodar_esaj
-    # from bots.bot_pje import rodar_pje  <-- Exemplo de futuros robôs
+    from bots.bot_pje import rodar_pje
+    from bots.bot_eproc import rodar_eproc
 
 except ImportError as e:
     sys.stderr.write(f"Erro ao importar módulos de robôs: {str(e)}\n")
@@ -36,15 +37,13 @@ def main():
         dados_finais = None
 
         if sistema == 'esaj':
-            # Executa a função mapeada no arquivo 'bots/bot_esaj.py'
             dados_finais = rodar_esaj(usuario, senha, numero_processo)
-
         elif sistema == 'pje':
-            # dados_finais = rodar_pje(usuario, senha, numero_processo)
-            raise NotImplementedError("O robô para o sistema PJe ainda está em desenvolvimento.")
-
+            dados_finais = rodar_pje(usuario, senha, numero_processo)
+        elif sistema == 'eproc':
+            dados_finais = rodar_eproc(usuario, senha, numero_processo)
         else:
-            raise ValueError(f"O sistema jurídico '{sistema}' não é suportado por este orquestrador.")
+            raise ValueError(f"O sistema '{sistema}' ainda não foi acoplado à fábrica.")
 
         # 4. Retorno Absoluto: Printa APENAS o JSON final na tela para o Laravel capturar
         if dados_finais:
