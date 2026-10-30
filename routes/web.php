@@ -67,13 +67,48 @@ Route::post('/consulta', [ConsultaController::class, 'buscar'])->name('consulta.
 
 use App\Http\Controllers\AgendaController;
 
-Route::get('/calendario-audiencias', [AgendaController::class, 'index'])
-    ->name('agenda.index');
-
 use App\Http\Controllers\GoogleCalendarController;
 
+Route::middleware('auth')
+    ->prefix('agenda-google')
+    ->name('google-calendar.')
+    ->group(function () {
+        Route::get('/', [GoogleCalendarController::class, 'index'])
+            ->name('index');
 
-Route::middleware('auth')->prefix('agenda-google')->name('google-calendar.')->group(function () {
-    Route::get('/', [GoogleCalendarController::class, 'index'])->name('index');
-    Route::get('/eventos', [GoogleCalendarController::class, 'events'])->name('events');
-});
+        Route::get('/eventos', [GoogleCalendarController::class, 'events'])
+            ->name('events');
+    });
+
+
+
+
+/*
+Copie as duas rotas abaixo para routes/web.php; não inclua este arquivo
+automaticamente. Remova as rotas de teste ou proteja-as em produção.
+*/
+Route::get('/teste-notificacoes', function () {
+    return view('notificacoes-demo');
+})->name('notificacoes-demo.index');
+
+Route::post('/teste-notificacoes', function (Request $request) {
+    $tipos = ['success', 'error', 'warning', 'info'];
+    $tipo = $request->input('tipo');
+    if (!in_array($tipo, $tipos, true)) $tipo = 'info';
+
+    $mensagens = [
+        'success' => ['Teste concluído!', 'A notificação de sucesso está funcionando.'],
+        'error' => ['Exemplo de erro', 'Esta é uma mensagem de erro demonstrativa.'],
+        'warning' => ['Atenção', 'Esta é uma mensagem de aviso demonstrativa.'],
+        'info' => ['Informação', 'Esta é uma mensagem informativa demonstrativa.'],
+    ];
+
+    return redirect()->route('notificacoes-demo.index')->with('toast', [
+        'tipo' => $tipo,
+        'titulo' => $mensagens[$tipo][0],
+        'mensagem' => $mensagens[$tipo][1],
+        'detalhes' => $tipo === 'success'
+            ? ['O componente Blade foi renderizado.', 'O CSS foi carregado.']
+            : [],
+    ]);
+})->name('notificacoes-demo.testar');

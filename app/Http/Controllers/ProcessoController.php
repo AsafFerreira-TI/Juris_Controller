@@ -110,9 +110,19 @@ class ProcessoController extends Controller
 
         Processo::create($dados);
 
-        return redirect()
-            ->route('processos.index')
-            ->with('sucesso', 'Processo criado com sucesso!');
+
+return redirect()
+    ->back()
+    ->with('toast', [
+        'tipo' => 'success',
+        'titulo' => 'Processo criado!',
+        'mensagem' => 'As informações foram salvas com sucesso.',
+        'detalhes' => [
+            'Número do processo atualizado.',
+            'Data da audiência conferida.',
+        ],
+    ]);
+
     }
 
 
@@ -150,9 +160,21 @@ class ProcessoController extends Controller
 
         $processo->update($dados);
 
-        return redirect()
-            ->route('processos.index')
-            ->with('sucesso', 'Processo atualizado com sucesso!');
+     $dataAnterior = $audiencia->data;
+    $audiencia->data = $request->input('data');
+    $audiencia->save();
+
+    return redirect()
+    ->back()
+    ->with('toast', [
+        'tipo' => 'success',
+        'titulo' => 'Audiência atualizada!',
+        'mensagem' => 'Confira a alteração realizada.',
+        'detalhes' => [
+            'Data anterior: ' . $dataAnterior,
+            'Nova data: ' . $audiencia->data,
+        ],
+    ]);
     }
 
 
