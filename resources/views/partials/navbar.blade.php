@@ -46,6 +46,12 @@
                         Processos
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-medium {{ request()->routeIs('consulta.index') ? 'text-white border-bottom border-warning border-2 pb-1' : 'text-secondary' }}"
+                    href="{{ route('consulta.index') }}">
+                Consulta
+                </a>
+                </li>
                   <li class="nav-item">
                     <a
                         class="nav-link fw-medium {{ request()->routeIs('agenda.index') ? 'text-white border-bottom border-warning border-2 pb-1' : 'text-secondary' }}"
