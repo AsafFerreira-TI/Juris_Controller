@@ -50,7 +50,7 @@
                 <label for="tribunal">Tribunal</label>
                 <select name="tribunal" id="tribunal" required>
                     <option value="">Selecione...</option>
-                    <option value="nao">Não lembro</option>
+                    <option value="auto">Não sei / Detectar automaticamente</option>
                     <option value="tjsp">TJSP (São Paulo)</option>
                     <option value="tjmg">TJMG (Minas Gerais)</option>
                     <option value="tjrj">TJRJ (Rio de Janeiro)</option>
@@ -80,8 +80,8 @@
             </div>
 
             <div class="resultado-item">
-                <p class="resultado-label">Tribunal de Origem:</p>
-                <p class="resultado-value uppercase">{{ $processo['siglaTribunal'] ?? 'Não informado' }}</p>
+                <p class="resultado-label">Sistema de Origem:</p>
+                <p class="resultado-value uppercase">{{ $processo['sistema']['nome'] ?? 'Não informado' }}</p>
             </div>
 
             <div class="resultado-item">

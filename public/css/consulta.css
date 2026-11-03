@@ -11,6 +11,10 @@ body {
     width: 100%;
 }
 
+main{
+    background-color: #fff;
+}
+
 .lbl-orange {
     color: #f5b400;
     font-weight: 800;
@@ -93,7 +97,7 @@ body {
 
 .form-processo {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     gap: 25px;
 }
 
@@ -114,6 +118,10 @@ body {
     color: #000;
     font-size: 1rem;
     outline: none;
+}
+
+.form-group input{
+    padding: 12px 16px;
 }
 
 .form-group input::placeholder {
@@ -157,9 +165,6 @@ body {
     max-width: 1200px;
     margin: 30px auto 60px;
     padding: 28px;
-    background: #fff;
-    border: 1px solid #f5f5f5;
-    border-radius: 16px;
 }
 
 .consulta-resultados h3 {
@@ -176,12 +181,7 @@ body {
     margin-bottom: 25px;
 }
 
-.resultado-item {
-    background: #f7f7f7;
-    border: 1px solid #f5b400;
-    border-radius: 12px;
-    padding: 16px;
-}
+
 
 .resultado-label {
     color: #f5b400;
