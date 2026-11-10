@@ -209,7 +209,7 @@ class ConsultaController extends Controller
                     ]);
 
                     if ($currentAttempt < $maxAttempts) {
-                        sleep($currentAttempt * 2);
+                        sleep($currentAttempt * 3);
                         continue;
                     }
 
@@ -239,6 +239,7 @@ class ConsultaController extends Controller
         return view('consulta', [
             'processo' => $resultado['processo'] ?? null,
             'mensagem' => $resultado['mensagem'] ?? null,
+            'tribunalUsado' => $tribunal,
         ]);
     }
 }

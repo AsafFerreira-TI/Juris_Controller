@@ -16,6 +16,8 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function () {
+     Route::post('processos/da-consulta', [ProcessoController::class, 'createFromConsulta'])
+        ->name('processos.createFromConsulta');
     Route::resource('processos', ProcessoController::class);
 });
 
